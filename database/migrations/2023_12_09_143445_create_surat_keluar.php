@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('nomor_petunjuk')->nullable();
             $table->string('nomor_paket')->nullable();
             $table->string('berkas');
+            $table->string('berkasTTD');
             $table->enum('status_persetujuan', ['belum', 'diajukan', 'diterima'])->default('belum');
             $table->timestamps();
         });

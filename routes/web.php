@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\{
     adminController,
+    kepsekController,
+    siswaController,
     surat_cuti_pegawaiController,
     surat_dispen_siswaController,
     surat_tugas_pegawaiController,
@@ -37,6 +39,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('store_surat_masuk', [adminController::class, 'store_surat_masuk'])->name('store_surat_masuk');
     Route::get('/show', [AdminController::class, 'show'])->name('show');
     Route::get('hapus_surat_masuk/{id}', [AdminController::class, 'hapus_surat_masuk'])->name('hapus_surat_masuk');
+    Route::get('pengajuan_ttd/{id}', [AdminController::class, 'pengajuan_ttd'])->name('pengajuan_ttd');
+    Route::get('diterima/{id}', [AdminController::class, 'diterima'])->name('diterima');
+
+    // Kepsek Controller
+    Route::get('pengajuan', [kepsekController::class, 'index'])->name('pengajuan');
+    Route::get('profile', [kepsekController::class, 'profile'])->name('profile');
+    Route::put('update_profile', [kepsekController::class, 'update_profile'])->name('update_profile');
+    Route::get('surat_acc', [kepsekController::class, 'surat_acc'])->name('surat.acc');
+     
+
 
 
     // surat Cuti Kepegawaian
@@ -76,4 +88,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/form-pegawai-surat-home-visit', [surat_home_visit_pegawaiController::class, 'form_surat_home_visit'])->name('form-pegawai-surat-home-visit');
     Route::post('/store-pegawai-surat-home-visit', [surat_home_visit_pegawaiController::class, 'store_surat_home_visit'])->name('store-pegawai-surat-home-visit');
     Route::get('hapus_surat_home_visit/{id}', [surat_home_visit_pegawaiController::class, 'hapus_surat_home_visit'])->name('hapus_surat_home_visit');
+
+    // surat pindah
+    Route::get('/siswa-surat-pindah', [siswaController::class, 'surat_pindah'])->name('siswa-surat-pindah');
+    Route::get('/form-siswa-surat-pindah', [siswaController::class, 'form_surat_pindah'])->name('form-siswa-surat-pindah');
+    Route::post('/store-siswa-surat-pindah', [siswaController::class, 'store_surat_pindah'])->name('store-siswa-surat-pindah');
+    Route::get('hapus_surat_pindah/{id}', [siswaController::class, 'hapus_surat_pindah'])->name('hapus_surat_pindah');
 });

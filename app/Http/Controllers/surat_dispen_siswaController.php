@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\keluar;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 
@@ -28,6 +29,8 @@ class surat_dispen_siswaController extends Controller
 
     public function store_surat_dispen(Request $request)
     {
+
+        $kepalasekolah = User::where('role', 2)->first();
         $data = [
             'nomor_surat' => $request->nomor_surat,
             'tanggalSurat' => $request->tanggalSurat,
@@ -43,21 +46,29 @@ class surat_dispen_siswaController extends Controller
             'waktu_dilaksanakan' => $request->waktu_dilaksanakan,
             'tgl_dilaksanakan' => $request->tgl_dilaksanakan,
             'tempat_dilaksanakan' => $request->tempat_dilaksanakan,
-            'nama_kepala' => $request->nama_kepala,
-            'nip_kepala' => $request->nip_kepala,
+            'nama_kepala' => $kepalasekolah->nama,
+            'nip_kepala' => $kepalasekolah->nip,
+            'ttd_kepala' => $kepalasekolah->ttd,
 
-        ];
+        ];  
 
         $pdf = Pdf::loadView('pages.surat_keluar.keluaran.tmpsurat_dispen_siswa', $data);
-        $pdf->setPaper('a4');
+        $pdfTtd = Pdf::loadView('pages.surat_keluar.keluaranttd.ttdsurat_dispen_siswa', $data);
+        // $pdf->setPaper('a4');
 
         $filename = 'pdf_' . time() . 'surat_dispen.pdf';
+        $filenameTTD = 'pdf_' . time() . 'Disepnsasi Siswa Acc.pdf';
+
         $directoryPath = 'uploads/suratKeluar/';
         if (!Storage::exists($directoryPath)) {
             Storage::makeDirectory($directoryPath, 0775, true, true);
         }
+
         $path = $directoryPath . $filename;
+        $pathTTD = $directoryPath . $filenameTTD;
+
         Storage::put($path, $pdf->output());
+        Storage::put($pathTTD, $pdfTtd->output());
 
         $date = Carbon::createFromFormat('Y-m-d', $request->tanggal)->setTime(now()->hour, now()->minute, now()->second)->setTimezone('Asia/Makassar');
 
@@ -74,6 +85,7 @@ class surat_dispen_siswaController extends Controller
         $suratMasuk->nomor_petunjuk = $request->petunjuk;
         $suratMasuk->nomor_paket = $request->nomor_paket;
         $suratMasuk->berkas = $path;
+        $suratMasuk->berkasTTD = $pathTTD;
         $suratMasuk->save();
 
         return redirect('siswa-surat-dispen');

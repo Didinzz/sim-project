@@ -31,112 +31,156 @@
                             <span class="ml-3" sidebar-toggle-item>Dashboard</span>
                         </a>
                     </li>
+                    @if (Auth::user()->role == 2)
+                        {{-- kepsek sidebar --}}
+                        <li>
+                            <a href="{{ route('profile') }}"
+                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 @yield('profile')"
+                                aria-controls="surat-masuk" data-collapse-toggle="surat-masuk">
+                                <i class="fa fa-square-envelope"></i>
+                                <span class="flex-1 ml-3 text-left whitespace-nowrap">Profil Saya</span>
+                            </a>
+                            <ul id="surat-masuk" class="hidden pl-4 space-y-2">
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{ route('pengajuan') }}"
+                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 @yield('belumAcc')"
+                                aria-controls="surat-masuk" data-collapse-toggle="surat-masuk">
+                                <i class="fa fa-square-envelope"></i>
+                                <span class="flex-1 ml-3 text-left whitespace-nowrap">Surat Belum Di Acc</span>
+                                <span class="bg-gray-800 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-white dark:text-gray-700">
+                                    {{ $totalAjuan }}</span>
+                            </a>
+                            <ul id="surat-masuk" class="hidden pl-4 space-y-2">
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{ route('surat.acc') }}"
+                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratAcc')"
+                                aria-controls="surat-masuk" data-collapse-toggle="surat-masuk">
+                                <i class="fa fa-square-envelope"></i>
+                                <span class="flex-1 ml-3 text-left whitespace-nowrap">Surat Sudah Di Acc</span>
+                                <span class="bg-gray-800 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-white dark:text-gray-700">
+                                    {{ $acc }}</span>
 
-                    {{-- surat masuk --}}
-                    <li>
-                        <a href="{{ route('dashboard.table') }}"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratmasuk')"
-                            aria-controls="surat-masuk" data-collapse-toggle="surat-masuk">
-                            <i class="fa fa-square-envelope"></i>
-                            <span class="flex-1 ml-3 text-left whitespace-nowrap">Surat Masuk</span>
-                        </a>
-                        <ul id="surat-masuk" class="hidden pl-4 space-y-2">
-                        </ul>
-                    </li>
-                    {{-- end surat masuk --}}
+                            </a>
+                            <ul id="surat-masuk" class="hidden pl-4 space-y-2">
+                            </ul>
+                        </li>
+                        {{-- surat masuk --}}
+                    @elseif (Auth::user()->role == 1)
+                        <li>
+                            <a href="{{ route('dashboard.table') }}"
+                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratmasuk')"
+                                aria-controls="surat-masuk" data-collapse-toggle="surat-masuk">
+                                <i class="fa fa-square-envelope"></i>
+                                <span class="flex-1 ml-3 text-left whitespace-nowrap">Surat Masuk</span>
+                            </a>
+                            <ul id="surat-masuk" class="hidden pl-4 space-y-2">
+                            </ul>
+                        </li>
+                        {{-- end surat masuk --}}
 
 
 
-                    {{-- Surat keluar --}}
-                    <li>
-                        <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratkeluar')"
-                            aria-controls="surat-keluar" data-collapse-toggle="surat-keluar">
-                            <i class="fa-solid fa-envelope-open-text"></i>
-                            <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Surat
-                                Keluar</span>
-                            <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                        <ul id="surat-keluar" class="hidden pl-4 space-y-2">
-                            <li class="mt-2">
-                                <button type="button"
-                                    class="@yield('kesiswaankeluar') flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700"
-                                    aria-controls="kesiswaan" data-collapse-toggle="kesiswaan">
-                                    <i class="fa-regular fa-user"></i>
-                                    <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                                        sidebar-toggle-item>Kesiswaan</span>
-                                    <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                                <ul id="kesiswaan" class="hidden pl-4 space-y-2">
-                                    <li class="mt-2">
-                                        <a href="{{ route('siswa-surat-dispen') }}"
-                                            class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratDispen')">
-                                            Surat Dispensasi
-                                        </a>
-                                    </li>
-                                    <li class="mt-2">
-                                        <a href="{{ route('siswa-surat-keterangan') }}"
-                                            class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratKeterangan')">
-                                            Surat Keterangan
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button"
-                                    class="@yield('pegawaikeluar') flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700"
-                                    aria-controls="kepegawaian" data-collapse-toggle="kepegawaian">
-                                    <i class="fa-solid fa-user-tie"></i>
-                                    <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                                        sidebar-toggle-item>Kepegawaian</span>
-                                    <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                                <ul id="kepegawaian" class="hidden pl-4 space-y-2">
-                                    <!-- Tambahkan item-menu kepegawaian di sini -->
-                                    <li class="mt-2">
-                                        <a href="{{ route('pegawai-surat-cuti') }}"
-                                            class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratCuti')">
-                                            Surat Cuti
-                                        </a>
-                                    </li>
-                                    <li class="mt-2">
-                                        <a href="{{ route('pegawai-surat-tugas') }}"
-                                            class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratTugas')">
-                                            Surat Tugas
-                                        </a>
-                                    </li>
-                                    <li class="mt-2">
-                                        <a href="{{ route('pegawai-surat-pensiun') }}"
-                                            class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('pensiun')">
-                                            Surat Pensiun Dini beleum selesai
-                                        </a>
-                                    </li>
-                                    <li class="mt-2">
-                                        <a href="{{ route('pegawai-surat-home-visit') }}"
-                                            class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('homevisit')">
-                                            Surat Home Visit
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    {{-- end surat keluar --}}
+                        {{-- Surat keluar --}}
+                        <li>
+                            <button type="button"
+                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratkeluar')"
+                                aria-controls="surat-keluar" data-collapse-toggle="surat-keluar">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                                <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Surat
+                                    Keluar</span>
+                                <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <ul id="surat-keluar" class="hidden pl-4 space-y-2">
+                                <li class="mt-2">
+                                    <button type="button"
+                                        class="@yield('kesiswaankeluar') flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700"
+                                        aria-controls="kesiswaan" data-collapse-toggle="kesiswaan">
+                                        <i class="fa-regular fa-user"></i>
+                                        <span class="flex-1 ml-3 text-left whitespace-nowrap"
+                                            sidebar-toggle-item>Kesiswaan</span>
+                                        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    <ul id="kesiswaan" class="hidden pl-4 space-y-2">
+                                        <li class="mt-2">
+                                            <a href="{{ route('siswa-surat-dispen') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratDispen')">
+                                                Surat Dispensasi
+                                            </a>
+                                        </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('siswa-surat-keterangan') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratKeterangan')">
+                                                Surat Keterangan
+                                            </a>
+                                        </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('siswa-surat-pindah') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratPindah')">
+                                                Surat Keterangan Pindah
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button type="button"
+                                        class="@yield('pegawaikeluar') flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700"
+                                        aria-controls="kepegawaian" data-collapse-toggle="kepegawaian">
+                                        <i class="fa-solid fa-user-tie"></i>
+                                        <span class="flex-1 ml-3 text-left whitespace-nowrap"
+                                            sidebar-toggle-item>Kepegawaian</span>
+                                        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor"
+                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    <ul id="kepegawaian" class="hidden pl-4 space-y-2">
+                                        <!-- Tambahkan item-menu kepegawaian di sini -->
+                                        <li class="mt-2">
+                                            <a href="{{ route('pegawai-surat-cuti') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratCuti')">
+                                                Surat Cuti
+                                            </a>
+                                        </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('pegawai-surat-tugas') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('suratTugas')">
+                                                Surat Tugas
+                                            </a>
+                                        </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('pegawai-surat-pensiun') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('pensiun')">
+                                                Surat Pensiun Dini beleum selesai
+                                            </a>
+                                        </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('pegawai-surat-home-visit') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('homevisit')">
+                                                Surat Home Visit
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- end surat keluar --}}
+                    @endif
 
                 </ul>
 

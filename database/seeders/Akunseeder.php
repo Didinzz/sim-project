@@ -18,12 +18,16 @@ class Akunseeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
+                'ttd' => 'default.png',
+                'role' => '1',
                 'password' => bcrypt('8520'),
             ],
             [
-                'name' => 'kepsek',
+                'name' => 'Kepala Sekolah',
                 'email' => 'kepsek@gmail.com',
-                'password' => bcrypt('8520'),
+                'ttd' => 'default.png',
+                'role' => '2',
+                'password' => bcrypt('asdf'),
             ],
         ];
         foreach ($user as $key => $value) {

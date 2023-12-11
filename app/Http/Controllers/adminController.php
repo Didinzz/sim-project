@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keluar;
 use App\Models\masuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 
@@ -13,7 +16,10 @@ use Carbon\Carbon;
 class adminController extends Controller
 {
     public function index (){
-        return view('pages.index');
+        $user = Auth::user();
+        $count = keluar::where('status_persetujuan', 'diajukan')->count();
+
+        return view('pages.index')->with(['user' => $user, 'totalAjuan'=>$count]);
     }
 
     public function table(){
@@ -119,5 +125,29 @@ public function store_surat_masuk(Request $request){
         }
         $data->delete();
         return redirect()->route('dashboard.table')->with('sucess', 'data berhasil dihapus');
+    }
+
+    public function pengajuan_ttd($id)
+    {
+        $data = keluar::find($id);
+
+        $data->status_persetujuan = 'diajukan';
+        $data->save();
+
+        return redirect()->back();
+    }
+
+    public function diterima($id){
+    {
+        $data = keluar::find($id);
+
+        
+
+        $data->status_persetujuan = 'diterima';
+        // $data->berkas =  $path;
+        $data->save();
+
+        return redirect()->back();
+    }
     }
 }

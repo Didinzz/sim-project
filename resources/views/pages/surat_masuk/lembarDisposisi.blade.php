@@ -549,7 +549,7 @@
             <table style="width: 100%;">
                 <tr>
                     <td style="width: 80px;">
-                        <img src="{{ public_path('assets/img/LogoprovGorontalo.png') }}" alt="Logo Provinsi Gorontalo"
+                        <img src="{{ public_path('assets/img/LOGO PROVINSI GORONTALO.png') }}" alt="Logo Provinsi Gorontalo"
                             class=" mt-2" />
                     </td>
                     <td style="width: 100%; ">
@@ -566,7 +566,7 @@
                         </p>
                     </td>
                     <td style="width: 100px;">
-                        <img src="{{ public_path('assets/img/LogoSmea.png') }}" alt="Logo SMKN 1 GORONTALO"
+                        <img src="{{ public_path('assets/img/TUT WURI HANDAYANI.png') }}" alt="Logo SMKN 1 GORONTALO"
                             class="mt-2" />
                     </td>
                 </tr>
