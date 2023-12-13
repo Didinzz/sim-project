@@ -12,15 +12,13 @@
             padding: 0;
         }
 
-        */
-
         .tengah {
             text-align: center;
             flex-grow: 1;
             padding: 0 20px;
         }
 
-        h3,
+        
         h4,
         h5 {
             margin: 3px 0;
@@ -38,8 +36,9 @@
 
         .container {
             max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: rebeccapurple;
 
             border-radius: 5px;
         }
@@ -49,22 +48,26 @@
         }
 
         table {
-            width: 80%;
-            max-width: 500px;
-            margin: 0;
+             max-width: 600px;
+            margin: 20px;
             margin-right: auto;
             margin-left: 10%;
+
             border-collapse: collapse;
+            border-collapse: collapse;
+            /* Menggabungkan border sel */
+            border-spacing: 0;
         }
+
+       
 
         th,
         td {
-            /* padding: 5px; */
             text-align: left;
         }
 
         .signature {
-            margin-top: 50px;
+            margin-top: 0px;
             text-align: right;
         }
     </style>
@@ -100,66 +103,83 @@
     </div>
 
     <div class="header" style="margin-bottom: 0; padding: 0; ">
-        <h2 class="suratketerangan" style="padding: 0; margin:0;"><span class="underline">SURAT TUGAS</span></h2>
+        <h2 class="suratketerangan" style="padding: 0; margin:0;"><span class="underline">SURAT Rekomendasi</span></h2>
         <p style="margin:2; padding:2;">Nomor : {{ $nomor_surat }}</p>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding: 0;">
         <div class="content">
             <p>Yang bertanda tangan dibawah ini Kepala SMK Negeri 3 Gorontalo dengan ini menugaskan kepada : </p>
-            <table style="width: 50%; "> 
+            <table style="width: 56%; ">
                 <tr>
                     <td>Nama</td>
                     <td>:</td>
                     <td>{{ $nama }}</td>
                 </tr>
+
                 <tr>
-                    <td>NIP.</td>
+                    <td>NIP</td>
                     <td>:</td>
-                    <td> {{ $nip }}</td>
+                    <td>{{ $nip }}</td>
                 </tr>
                 <tr>
-                    <td>Jabatan</td>
+                    <td>Pangkat/Golongan</td>
+                    <td>:</td>
+                    <td>{{ $golongan }}</td>
+                </tr>
+
+                <tr>
+                    <td> Jabatan </td>
                     <td>:</td>
                     <td>{{ $jabatan }}</td>
                 </tr>
+
+                <tr>
+                    <td>Unit Kerja</td>
+                    <td>:</td>
+                    <td>{{ $unitKerja }}</td>
+                </tr>
             </table>
-            <p>Untuk melaksanakan Home Visit ( Kunjungan ke rumah) orang tua/wali siswa :</p>
-            <table style="width: 60%; float:left    ;" >
+            <p>Yang bertanda tangan di bawah ini Kepala SMK Negeri 3 Gorontalo dengan ini menerangkan bahwa :</p>
+            <table style="width: 47%; float:left    ;">
                 <tr>
                     <td>Nama</td>
                     <td>:</td>
-                    <td>{{ $namasiswa }}</td>
+                    <td> {{ $namasiswa }}</td>
                 </tr>
                 <tr>
-                    <td>Kelas/ Kompetensi Keahlian</td>
+                    <td>NISN</td>
                     <td>:</td>
-                    <td> {{ $kelas }} </td>
+                    <td>{{ $nisn }}</td>
                 </tr>
                 <tr>
-                    <td>Alamat</td>
+                    <td>Asal Sekolah</td>
                     <td>:</td>
-                    <td>{{ $alamat }}</td>
+                    <td>{{ $asalSekolah }}</td>
                 </tr>
+
                 <tr>
-                    <td>Hari/Tanggal Kunjungan </td>
+                    <td> Alamat </td>
                     <td>:</td>
-                    <td>{{ $tanggalKunjungan }}</td>
+                    <td>{{ $alamat }}
+                    </td>
                 </tr>
             </table>
+            <p>Untuk mengikuti program beasiswa <strong>{{ $namaProgram }} </strong>yang diselenggarakan oleh
+                {{ $penyelenggara }}.</p>
             <p>
                 Demikian surat tugas ini dibuat untuk dilaksanakan sebagaimana mestinya.
             </p>
         </div>
 
         <div class="signature">
-             @php
+            @php
                     $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
                     $tglSurat = $convertdate->format('d F Y');
                 @endphp
             <p>Gorontalo, {{ $tglSurat }} <br>
                 Kepala SMK Negeri 3 Gorontalo <br>
-                <br><br><br>    
+                <br><br><br>
             <p>ISHAK A. PIU, S.Pd <br>
                 Pembina Tkt. I <br>
                 NIP. 197207201997021001 <br>

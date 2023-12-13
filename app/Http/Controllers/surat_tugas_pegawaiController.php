@@ -72,6 +72,7 @@ class surat_tugas_pegawaiController extends Controller
         $suratMasuk->nomor_petunjuk = $request->petunjuk;
         $suratMasuk->nomor_paket = $request->nomor_paket;
         $suratMasuk->berkas = $path;
+        $suratMasuk->berkasTTD = "belum";
         $suratMasuk->save();
 
         return redirect('pegawai-surat-tugas');

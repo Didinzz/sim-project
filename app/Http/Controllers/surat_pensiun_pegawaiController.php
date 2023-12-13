@@ -64,6 +64,7 @@ class surat_pensiun_pegawaiController extends Controller
         $suratMasuk->nomor_petunjuk = $request->petunjuk;
         $suratMasuk->nomor_paket = $request->nomor_paket;
         $suratMasuk->berkas = $path;
+        $suratMasuk->berkasTTD = 'belumsss';
         $suratMasuk->save();
 
         return redirect('pegawai-surat-pensiun');

@@ -13,7 +13,7 @@ class surat_home_visit_pegawaiController extends Controller
 {
     public function surat_home_visit()
     {
-        $data = keluar::where('tipe_surat', 'suratHome visit')->orderBy('tanggal', 'desc')->get();
+        $data = keluar::where('tipe_surat', 'Surat Home visit')->orderBy('tanggal', 'desc')->get();
 
 
         return view('pages.surat_keluar.kepegawaian.surat_home_visit.table_surat_home_visit')->with(['data' => $data]);
@@ -42,32 +42,33 @@ class surat_home_visit_pegawaiController extends Controller
         $pdf = Pdf::loadView('pages.surat_keluar.keluaran.tmpsurat_home_visit', $data);
         $pdf->setPaper('a4');
 
-        // $filename = 'pdf_' . time() . 'suratHome_visit.pdf';
-        // $directoryPath = 'uploads/suratKeluar/';
-        // if (!Storage::exists($directoryPath)) {
-        //     Storage::makeDirectory($directoryPath, 0775, true, true);
-        // }
-        // $path = $directoryPath . $filename;
-        // Storage::put($path, $pdf->output());
+        $filename = 'pdf_' . time() . 'suratHome_visit.pdf';
+        $directoryPath = 'uploads/suratKeluar/';
+        if (!Storage::exists($directoryPath)) {
+            Storage::makeDirectory($directoryPath, 0775, true, true);
+        }
+        $path = $directoryPath . $filename;
+        Storage::put($path, $pdf->output());
 
-        // $date = Carbon::createFromFormat('Y-m-d', $request->tanggal)->setTime(now()->hour, now()->minute, now()->second)->setTimezone('Asia/Makassar');
+        $date = Carbon::createFromFormat('Y-m-d', $request->tanggal)->setTime(now()->hour, now()->minute, now()->second)->setTimezone('Asia/Makassar');
 
-        return $pdf->download('output.pdf');
+        // return $pdf->download('output.pdf');
 
 
 
-        // $suratMasuk = new keluar;
-        // $suratMasuk->nomor_berkas = $request->nomor_berkas;
-        // $suratMasuk->alamat_penerima = $request->penerima;
-        // $suratMasuk->tanggal = $date;
-        // $suratMasuk->tipe_surat = $request->tipeSurat;
-        // $suratMasuk->perihal = $request->perihal;
-        // $suratMasuk->nomor_petunjuk = $request->petunjuk;
-        // $suratMasuk->nomor_paket = $request->nomor_paket;
-        // $suratMasuk->berkas = $path;
-        // $suratMasuk->save();
+        $suratMasuk = new keluar;
+        $suratMasuk->nomor_berkas = $request->nomor_berkas;
+        $suratMasuk->alamat_penerima = $request->penerima;
+        $suratMasuk->tanggal = $date;
+        $suratMasuk->tipe_surat = $request->tipeSurat;
+        $suratMasuk->perihal = $request->perihal;
+        $suratMasuk->nomor_petunjuk = $request->petunjuk;
+        $suratMasuk->nomor_paket = $request->nomor_paket;
+        $suratMasuk->berkas = $path;
+        $suratMasuk->berkasTTD = "belum";
+        $suratMasuk->save();
 
-        // return redirect('pegawai-surat-home_visit');
+        return redirect('pegawai-surat-home-visit');
     }
 
     public function hapus_surat_home_visit($id)

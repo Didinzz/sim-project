@@ -95,11 +95,14 @@ class surat_dispen_siswaController extends Controller
     {
         $data = keluar::find($id);
         $pathFile = $data->berkas;
+        $pathFileTTD = $data->berkasTTD;
 
-        if ($pathFile != null || $pathFile != '') {
+
+        if ($pathFile != null || $pathFile != '' || $pathFileTTD != null || $pathFileTTD != '') {
             Storage::delete($pathFile);
+            Storage::delete($pathFileTTD);
         }
         $data->delete();
-        return redirect()->route('siswa-surat-dispen')->with('sucess', 'data berhasil dihapus');
+        return redirect()->back();
     }
 }

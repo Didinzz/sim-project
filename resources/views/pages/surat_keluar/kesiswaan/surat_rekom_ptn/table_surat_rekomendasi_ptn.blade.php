@@ -2,14 +2,15 @@
  @section('title', 'Dashboard')
  @section('suratkeluar', 'bg-gray-300 dark:bg-gray-700')
  @section('kesiswaankeluar', 'bg-gray-300 dark:bg-gray-700')
- @section('suratDispen', 'bg-gray-300 dark:bg-gray-700')
+ @section('rekomPtn', 'bg-gray-300 dark:bg-gray-700')
 
  @section('content')
      <div
          class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
          <div class="w-full mb-1">
              <div class="mb-4">
-                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Table Surat Dispen Siswa</h1>
+                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Table Surat Rekomendasi PTN
+                 </h1>
              </div>
              <div class="sm:flex space-between">
                  <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
@@ -28,7 +29,7 @@
                  </div>
                  <div class="flex items-center ml-auto space-x-2 sm:space-x-3">
 
-                     <a href="{{ route('form-siswa-surat-dispen') }}" type="button"
+                     <a href="{{ route('form-siswa-surat-rekomendasi-ptn') }}" type="button"
                          class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
                          <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                              xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +106,7 @@
                                          {{ $m->tanggal }}
 
                                      </td>
-                                     
+
                                      <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                          {{ $m->perihal }}
 
@@ -119,37 +120,14 @@
 
                                      </td>
                                      <td class="p-4 space-x-2 whitespace-nowrap text-center">
-                                        
-                                         
-                                         @if ($m->status_persetujuan == 'belum')
-                                          <button data-modal-target="static-modal" data-modal-toggle="lihatBerkas{{ $m->id }}"
-                                             type="button" data-modal-toggle="edit-user-modal-3"
+                                         <button data-modal-target="static-modal"
+                                             data-modal-toggle="lihatBerkasMasuk{{ $m->id }}" type="button"
+                                             data-modal-toggle="edit-user-modal-3"
                                              class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
-                                            <i class="fa-solid fa-eye mr-2"></i>Lihat Surat    
+                                             <i class="fa-solid fa-eye mr-2"></i>Lihat Surat
                                          </button>
-                                         <a href="{{ url('pengajuan_ttd/' .$m->id) }}" 
-                                            type="button" 
-                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
-                                            <i class="fa-solid fa-file-signature mr-2"></i>Ajukan Ttd    
-                                        </a>
-                                        @elseif ($m->status_persetujuan == 'diajukan')
-                                        <span
-                                                class="inline-flex items-center px-2 py-1 text-sm font-medium text-center text-white rounded-md bg-yellow-400 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-                                                Menunggu TTD
-                                            </span>
-                                        @elseif ($m->status_persetujuan == 'diterima')
-                                         <button data-modal-target="static-modal" data-modal-toggle="lihatBerkasTTD{{ $m->id }}"
-                                             type="button" data-modal-toggle="edit-user-modal-3"
-                                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
-                                            <i class="fa-solid fa-eye mr-2"></i>Lihat Surat    
-                                         </button>
-                                        <span
-                                                class="inline-flex items-center px-2 py-1 text-sm font-medium text-center text-white rounded-md bg-green-400 hover:bg-green-600 focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-yellow-800">
-                                                Sudah Di TTD
-                                            </span>
-                                        @endif
-                                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        type="button" data-modal-toggle="delete-user-modal-3"
+                                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                             type="button" data-modal-toggle="delete-user-modal-3"
                                              class=" inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:bg-red-700 dark:hover:bg-red-800 dark:focus:ring-red-900">
 
                                              <i class="fa-solid fa-trash"></i>
@@ -224,12 +202,12 @@
      </div>
 
 
-    
-     {{-- Berkas Surat Keluar --}}
+
+     {{-- Berkas Surat Masuk --}}
      <!-- Main modal -->
 
      @foreach ($data as $m)
-         <div id="lihatBerkas{{ $m->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+         <div id="lihatBerkasMasuk{{ $m->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
              <div class="relative p-4 w-full max-w-2xl max-h-full">
                  <!-- Modal content -->
@@ -241,7 +219,7 @@
                          </h3>
                          <button type="button"
                              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                             data-modal-hide="lihatBerkas{{ $m->id }}">
+                             data-modal-hide="lihatBerkasMasuk{{ $m->id }}">
                              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 14 14">
                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -262,71 +240,44 @@
      @endforeach
 
 
-     {{-- Berkas Surat Keluar  TTD--}}
-     <!-- Main modal -->
+
+     {{-- modal hapus --}}
 
      @foreach ($data as $m)
-         <div id="lihatBerkasTTD{{ $m->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+         <div id="popup-modal" tabindex="-1"
              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-             <div class="relative p-4 w-full max-w-2xl max-h-full">
-                 <!-- Modal content -->
+             <div class="relative p-4 w-full max-w-md max-h-full">
                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                     <!-- Modal header -->
-                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                         <h3 class="text-xl font-bold justify-center text-gray-900 dark:text-white">
-                             Berkas Surat Masuk
-                         </h3>
-                         <button type="button"
-                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                             data-modal-hide="lihatBerkasTTD{{ $m->id }}">
-                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                 viewBox="0 0 14 14">
-                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                     stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                             </svg>
-                             <span class="sr-only">Close modal</span>
-                         </button>
-                     </div>
-                     <!-- Modal body -->
-                     <div class="p-4 md:p-5 space-y-4">
-                         <iframe src="{{ asset('storage/' . $m->berkasTTD) }}" style="width: 100%" height="500"
-                             id="myframe"></iframe>
-
+                     <button type="button"
+                         class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                         data-modal-hide="popup-modal">
+                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 14 14">
+                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                         </svg>
+                         <span class="sr-only">Close modal</span>
+                     </button>
+                     <div class="p-4 md:p-5 text-center">
+                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                         </svg>
+                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah Anda Yakin Ingin
+                             Menghapus Surat Masuk?</h3>
+                         <a href="{{ url('hapusSuratKeluar/' . $m->id) }}" data-modal-hide="popup-modal"
+                             type="button"
+                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                             Hapus
+                         </a>
+                         <button data-modal-hide="popup-modal" type="button"
+                             class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Batal</button>
                      </div>
                  </div>
              </div>
          </div>
      @endforeach
-
-
-
-     {{-- modal hapus --}}
-
-@foreach ($data as $m )
-    
-     <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-md max-h-full">
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                </svg>
-                <span class="sr-only">Close modal</span>
-            </button>
-            <div class="p-4 md:p-5 text-center">
-                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                </svg>
-                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah Anda Yakin Ingin Menghapus Surat Masuk?</h3>
-                <a href="{{ url('hapus_surat_dispen/' .$m->id ) }}" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                    Hapus
-                </a>
-                <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Batal</button>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
 
 
 

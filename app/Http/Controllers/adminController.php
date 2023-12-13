@@ -150,4 +150,18 @@ public function store_surat_masuk(Request $request){
         return redirect()->back();
     }
     }
+
+    public function hapusSuratKeluar($id){
+        $data = keluar::find($id);
+        $pathFile = $data->berkas;
+        $pathFileTTD = $data->berkasTTD;
+
+
+        if ($pathFile != null || $pathFile != '' || $pathFileTTD != null || $pathFileTTD != '') {
+            Storage::delete($pathFile);
+            Storage::delete($pathFileTTD);
+        }
+        $data->delete();
+        return redirect()->back();
+    }
 }

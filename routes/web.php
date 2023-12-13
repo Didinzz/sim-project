@@ -3,6 +3,7 @@
 use App\Http\Controllers\{
     adminController,
     kepsekController,
+    pegawaiController,
     siswaController,
     surat_cuti_pegawaiController,
     surat_dispen_siswaController,
@@ -41,13 +42,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('hapus_surat_masuk/{id}', [AdminController::class, 'hapus_surat_masuk'])->name('hapus_surat_masuk');
     Route::get('pengajuan_ttd/{id}', [AdminController::class, 'pengajuan_ttd'])->name('pengajuan_ttd');
     Route::get('diterima/{id}', [AdminController::class, 'diterima'])->name('diterima');
+    Route::get('hapusSuratKeluar/{id}', [AdminController::class, 'hapusSuratKeluar'])->name('hapus.surat.keluar');
 
     // Kepsek Controller
     Route::get('pengajuan', [kepsekController::class, 'index'])->name('pengajuan');
     Route::get('profile', [kepsekController::class, 'profile'])->name('profile');
     Route::put('update_profile', [kepsekController::class, 'update_profile'])->name('update_profile');
     Route::get('surat_acc', [kepsekController::class, 'surat_acc'])->name('surat.acc');
-     
+
 
 
 
@@ -89,9 +91,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/store-pegawai-surat-home-visit', [surat_home_visit_pegawaiController::class, 'store_surat_home_visit'])->name('store-pegawai-surat-home-visit');
     Route::get('hapus_surat_home_visit/{id}', [surat_home_visit_pegawaiController::class, 'hapus_surat_home_visit'])->name('hapus_surat_home_visit');
 
-    // surat pindah
+    // surat pindah siswa
     Route::get('/siswa-surat-pindah', [siswaController::class, 'surat_pindah'])->name('siswa-surat-pindah');
     Route::get('/form-siswa-surat-pindah', [siswaController::class, 'form_surat_pindah'])->name('form-siswa-surat-pindah');
     Route::post('/store-siswa-surat-pindah', [siswaController::class, 'store_surat_pindah'])->name('store-siswa-surat-pindah');
-    Route::get('hapus_surat_pindah/{id}', [siswaController::class, 'hapus_surat_pindah'])->name('hapus_surat_pindah');
+
+    // surat Rekomendasi Beasiswa
+    Route::get('/siswa-surat-rekomendasi-beasiswa', [siswaController::class, 'surat_rekomendasi_beasiswa'])->name('siswa-surat-rekomendasi-beasiswa');
+    Route::get('/form-siswa-surat-rekomendasi-beasiswa', [siswaController::class, 'form_surat_rekomendasi_beasiswa'])->name('form-siswa-surat-rekomendasi-beasiswa');
+    Route::post('/store-siswa-surat-rekomendasi-beasiswa', [siswaController::class, 'store_surat_rekomendasi_beasiswa'])->name('store-siswa-surat-rekomendasi-beasiswa');
+
+    // surat Rekomendasi Ptn
+    Route::get('/siswa-surat-rekomendasi-ptn', [siswaController::class, 'surat_rekomendasi_ptn'])->name('siswa-surat-rekomendasi-ptn');
+    Route::get('/form-siswa-surat-rekomendasi-ptn', [siswaController::class, 'form_surat_rekomendasi_ptn'])->name('form-siswa-surat-rekomendasi-ptn');
+    Route::post('/store-siswa-surat-rekomendasi-ptn', [siswaController::class, 'store_surat_rekomendasi_ptn'])->name('store-siswa-surat-rekomendasi-ptn');
+
+    // surat Dispen guru
+    Route::get('/pegawai-surat-dispen-guru', [pegawaiController::class, 'surat_dispen_guru'])->name('pegawai-surat-dispen-guru');
+    Route::get('/form-pegawai-surat-dispen-guru', [pegawaiController::class, 'form_surat_dispen_guru'])->name('form-pegawai-surat-dispen-guru');
+    Route::post('/store-pegawai-surat-dispen-guru', [pegawaiController::class, 'store_surat_dispen_guru'])->name('store-pegawai-surat-dispen-guru');
 });

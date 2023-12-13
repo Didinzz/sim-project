@@ -133,6 +133,18 @@
                                                 Surat Keterangan Pindah
                                             </a>
                                         </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('siswa-surat-rekomendasi-beasiswa') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('rekomBeasiswa')">
+                                                Surat Rekomendasi Beasiswa
+                                            </a>
+                                        </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('siswa-surat-rekomendasi-ptn') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('rekomPtn')">
+                                                Surat Rekomendasi PTN
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -175,6 +187,12 @@
                                                 Surat Home Visit
                                             </a>
                                         </li>
+                                        <li class="mt-2">
+                                            <a href="{{ route('pegawai-surat-dispen-guru') }}"
+                                                class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('dispenGuru')">
+                                                Surat Dispensasi Guru
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -186,7 +204,7 @@
 
             </div>
         </div>
-        <div class="absolute bottom-0 left-0 justify-center hidden w-full p-4 space-x-4 bg-white lg:flex dark:bg-gray-800"
+        {{-- <div class="absolute bottom-0 left-0 justify-center hidden w-full p-4 space-x-4 bg-white lg:flex dark:bg-gray-800"
             sidebar-bottom-menu>
             <a href="" data-tooltip-target="tooltip-settings"
                 class="inline-flex justify-center  p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -202,6 +220,6 @@
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
-        </div>
+        </div> --}}
 </aside>
 <div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>
