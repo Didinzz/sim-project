@@ -297,15 +297,15 @@
                     <div>
                         @php
                         $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
-                        $tglSurat = $convertdate->format('d F Y');
+                        $tglSurat = $convertdate->isoformat('D MMMM YYYY');
                     @endphp
                         <p>Gorontalo, {{ $tglSurat }}<br>
                             Kepala Sekolah<br>
                             <br><br>
-                        <p><strong>Ishak A. Piu, S.Pd</strong><br>
+                        <p><strong>{{ $nama_kepala }}</strong><br>
 
-                            <strong>Pembina Tkt 1 </strong><br>
-                            <strong>NIP. 197207201997021001</strong> <br>
+                            <strong>{{ $golongan_kepala }} </strong><br>
+                            <strong>NIP. {{ $nip_kepala }}</strong> <br>
                     </div>
                 </div>
             </div>

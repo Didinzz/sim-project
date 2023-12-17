@@ -1,5 +1,5 @@
  @extends('layouts.admin')
- @section('title', 'Dashboard')
+ @section('title', 'Surat Yang Sudah Di Acc')
  @section('suratAcc', 'bg-gray-300 dark:bg-gray-700')
 
  @section('content')
@@ -7,11 +7,11 @@
          class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
          <div class="w-full mb-1">
              <div class="mb-4">
-                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Semua Surat Masuk</h1>
+                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Semua Yang Sudah Di Tanda Tangani</h1>
              </div>
              <div class="sm:flex space-between">
                  <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                     <form class="lg:pr-3" action="{{ url('table') }}" method="GET">
+                     <form class="lg:pr-3" action="{{ url('surat_acc') }}" method="GET">
                          <label for="users-search" class="sr-only">Search</label>
                          <div class="flex items-center">
                              <input type="text" name="search"
@@ -116,7 +116,7 @@
                                              data-modal-toggle="lihatBerkasMasuk{{ $m->id }}" type="button"
                                              data-modal-toggle="edit-user-modal-3"
                                              class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
-                                             <i class="fa-solid fa-file-pdf mr-2"></i>Surat Masuk
+                                             <i class="fa-solid fa-file-pdf mr-2"></i>Lihat Surat
                                          </button>
                                          
                                          @if($m->status_persetujuan == 'diajukan')
@@ -237,7 +237,7 @@
                      </div>
                      <!-- Modal body -->
                      <div class="p-4 md:p-5 space-y-4">
-                         <iframe src="{{ asset('storage/' . $m->berkas) }}" style="width: 100%" height="500"
+                         <iframe src="{{ asset('storage/' . $m->berkasTTD) }}" style="width: 100%" height="500"
                              id="myframe"></iframe>
 
                      </div>

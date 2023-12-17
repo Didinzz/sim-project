@@ -10,27 +10,35 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
-
+use Illuminate\Support\Facades\Session;
 
 class adminController extends Controller
 {
-    public function index (){
+    public function index()
+    {
         $user = Auth::user();
+        $belum = keluar::where('status_persetujuan', 'belum')->count();
         $count = keluar::where('status_persetujuan', 'diajukan')->count();
+        $countacc = keluar::where('status_persetujuan', 'diterima')->count();
+        $totMasuk = masuk::count();
+        $totKeluar = keluar::count();
 
-        return view('pages.index')->with(['user' => $user, 'totalAjuan'=>$count]);
+
+        return view('pages.index')->with(['user' => $user, 'totalAjuan' => $count, 'acc' => $countacc, 'belum' => $belum, 'masuk' => $totMasuk, 'keluar' => $totKeluar]);
     }
 
-    public function table(){
+    public function table()
+    {
         $data = masuk::all();
         return view('pages.surat_masuk.table', compact('data'));
     }
-    public function surat_masuk(){
+    public function surat_masuk()
+    {
         return view('pages.surat_masuk.form_surat');
     }
 
-public function store_surat_masuk(Request $request){
+    public function store_surat_masuk(Request $request)
+    {
         // $request->validate(
         //     [
         //         'gambar' => 'required|mimes:jpeg,png,jpg,pdf|max:5000',
@@ -109,7 +117,8 @@ public function store_surat_masuk(Request $request){
         $suratMasuk->lembarDisposisi = $pathDisposisi;
         $suratMasuk->save();
 
-        
+
+        Session::flash('tambah', 'Berhasil Membuat Surat Masuk');
         return redirect('table');
     }
 
@@ -124,6 +133,8 @@ public function store_surat_masuk(Request $request){
             Storage::delete($pathFileDisposisi);
         }
         $data->delete();
+        Session::flash('hapus', 'Berhasil Menghapus Surat Masuk');
+
         return redirect()->route('dashboard.table')->with('sucess', 'data berhasil dihapus');
     }
 
@@ -133,25 +144,30 @@ public function store_surat_masuk(Request $request){
 
         $data->status_persetujuan = 'diajukan';
         $data->save();
+        Session::flash('ajukanTTD', 'Pengajuan Tanda Tangan Berhasil');
+
 
         return redirect()->back();
     }
 
-    public function diterima($id){
+    public function diterima($id)
+    { {
+            $data = keluar::find($id);
+
+
+
+            $data->status_persetujuan = 'diterima';
+            // $data->berkas =  $path;
+            $data->save();
+            Session::flash('accTTD', 'Surat Berhasil Di Tanda Tadangani');
+
+
+            return redirect()->back();
+        }
+    }
+
+    public function hapusSuratKeluar($id)
     {
-        $data = keluar::find($id);
-
-        
-
-        $data->status_persetujuan = 'diterima';
-        // $data->berkas =  $path;
-        $data->save();
-
-        return redirect()->back();
-    }
-    }
-
-    public function hapusSuratKeluar($id){
         $data = keluar::find($id);
         $pathFile = $data->berkas;
         $pathFileTTD = $data->berkasTTD;
@@ -161,6 +177,8 @@ public function store_surat_masuk(Request $request){
             Storage::delete($pathFile);
             Storage::delete($pathFileTTD);
         }
+        Session::flash('hapus', 'Berhasil Menghapus Surat Keluar');
+
         $data->delete();
         return redirect()->back();
     }

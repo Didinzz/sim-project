@@ -1,10 +1,88 @@
  @extends('layouts.admin')
- @section('title', 'Dashboard')
+ @section('title', 'Surat Cuti')
  @section('suratkeluar', 'bg-gray-300 dark:bg-gray-700')
  @section('pegawaikeluar', 'bg-gray-300 dark:bg-gray-700')
  @section('suratCuti', 'bg-gray-300 dark:bg-gray-700')
 
  @section('content')
+ @if (session()->has('ajukanTTD'))
+         <div id="toast-success"
+             class="mt-3 flex items-center w-full max-w-full p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-md  dark:text-gray-400 dark:bg-gray-800"
+             role="alert">
+             <div
+                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                     viewBox="0 0 20 20">
+                     <path
+                         d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                 </svg>
+                 <span class="sr-only">Check icon</span>
+             </div>
+             <div class="ms-3 text-sm font-normal">{{ Session('ajukanTTD') }}</div>
+             <button type="button"
+                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                 data-dismiss-target="#toast-success" aria-label="Close">
+                 <span class="sr-only">Close</span>
+                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 14 14">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                 </svg>
+             </button>
+         </div>
+     @endif
+     @if (session()->has('tambah'))
+         <div id="toast-success"
+             class="mt-3 flex items-center w-full max-w-full p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-md  dark:text-gray-400 dark:bg-gray-800"
+             role="alert">
+             <div
+                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                     viewBox="0 0 20 20">
+                     <path
+                         d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                 </svg>
+                 <span class="sr-only">Check icon</span>
+             </div>
+             <div class="ms-3 text-sm font-normal">{{ Session('tambah') }}</div>
+             <button type="button"
+                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                 data-dismiss-target="#toast-success" aria-label="Close">
+                 <span class="sr-only">Close</span>
+                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 14 14">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                 </svg>
+             </button>
+         </div>
+     @endif
+     @if (session()->has('hapus'))
+         <div id="toast-warning"
+             class=" mt-3 mb-4 flex items-center w-full max-w-full p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+             role="alert">
+             <div
+                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg dark:bg-orange-700 dark:text-orange-200">
+                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                     viewBox="0 0 20 20">
+                     <path
+                         d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
+                 </svg>
+                 <span class="sr-only">Warning icon</span>
+             </div>
+             <div class="ms-3 text-sm font-normal">{{ Session('hapus') }}</div>
+             <button type="button"
+                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                 data-dismiss-target="#toast-warning" aria-label="Close">
+                 <span class="sr-only">Close</span>
+                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 14 14">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                 </svg>
+             </button>
+         </div>
+     @endif
      <div
          class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
          <div class="w-full mb-1">
@@ -13,7 +91,7 @@
              </div>
              <div class="sm:flex space-between">
                  <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                     <form class="lg:pr-3" action="{{ url('table') }}" method="GET">
+                     <form class="lg:pr-3" action="{{ url('pegawai-surat-cuti') }}" method="GET">
                          <label for="users-search" class="sr-only">Search</label>
                          <div class="flex items-center">
                              <input type="text" name="search"
@@ -118,14 +196,45 @@
                                          {{ $m->nomor_paket }}
 
                                      </td>
-                                     <td class="p-4 space-x-2 whitespace-nowrap text-center">
-                                         <button data-modal-target="static-modal" data-modal-toggle="lihatBerkasMasuk{{ $m->id }}"
+                                    <td class="p-4 space-x-2 whitespace-nowrap text-center">
+                                        
+                                         
+                                       
+                                         @if ($m->status_persetujuan == 'belum')
+                                           <button data-modal-target="static-modal" data-modal-toggle="lihatBerkas{{ $m->id }}"
+                                            type="button" data-modal-toggle="edit-user-modal-3"
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
+                                           <i class="fa-solid fa-eye mr-2"></i>Lihat Surat    
+                                        </button>
+                                         <a href="{{ url('pengajuan_ttd/' .$m->id) }}" 
+                                            type="button" 
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
+                                            <i class="fa-solid fa-file-signature mr-2"></i>Ajukan Ttd    
+                                        </a>
+                                        @elseif ($m->status_persetujuan == 'diajukan')
+                                        <button data-modal-target="static-modal"
+                                                 data-modal-toggle="lihatBerkas{{ $m->id }}" type="button"
+                                                 data-modal-toggle="edit-user-modal-3"
+                                                 class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
+                                                 <i class="fa-solid fa-eye mr-2"></i>Lihat Surat
+                                             </button>
+                                        <span
+                                                class="inline-flex items-center px-2 py-1 text-sm font-medium text-center text-white rounded-md bg-yellow-400 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                                                Menunggu TTD
+                                            </span>
+                                        @elseif ($m->status_persetujuan == 'diterima')
+                                         <button data-modal-target="static-modal" data-modal-toggle="lihatBerkasTTD{{ $m->id }}"
                                              type="button" data-modal-toggle="edit-user-modal-3"
                                              class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800">
                                             <i class="fa-solid fa-eye mr-2"></i>Lihat Surat    
                                          </button>
-                                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                             type="button" data-modal-toggle="delete-user-modal-3"
+                                        <span
+                                                class="inline-flex items-center px-2 py-1 text-sm font-medium text-center text-white rounded-md bg-green-400 hover:bg-green-600 focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-yellow-800">
+                                                Sudah Di TTD
+                                            </span>
+                                        @endif
+                                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                        type="button" data-modal-toggle="delete-user-modal-3"
                                              class=" inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:bg-red-700 dark:hover:bg-red-800 dark:focus:ring-red-900">
 
                                              <i class="fa-solid fa-trash"></i>
@@ -205,19 +314,19 @@
      <!-- Main modal -->
 
      @foreach ($data as $m)
-         <div id="lihatBerkasMasuk{{ $m->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+         <div id="lihatBerkas{{ $m->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
              <div class="relative p-4 w-full max-w-2xl max-h-full">
                  <!-- Modal content -->
-                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 max-w-3xl mx-auto">
                      <!-- Modal header -->
                      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                          <h3 class="text-xl font-bold justify-center text-gray-900 dark:text-white">
-                             Berkas Surat Masuk
+                             Berkas Surat Keluar
                          </h3>
                          <button type="button"
                              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                             data-modal-hide="lihatBerkasMasuk{{ $m->id }}">
+                             data-modal-hide="lihatBerkas{{ $m->id }}">
                              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 14 14">
                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -228,7 +337,42 @@
                      </div>
                      <!-- Modal body -->
                      <div class="p-4 md:p-5 space-y-4">
-                         <iframe src="{{ asset('storage/' . $m->berkas) }}" style="width: 100%" height="500"
+                         <iframe src="{{ asset('storage/' . $m->berkas) }}" style="width: 100%" height="600"
+                             id="myframe"></iframe>
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+     @endforeach
+
+
+     {{-- Berkas TTD --}}
+     @foreach ($data as $m)
+         <div id="lihatBerkasTTD{{ $m->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+             <div class="relative p-4 w-full max-w-2xl max-h-full">
+                 <!-- Modal content -->
+                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 max-w-3xl mx-auto">
+                     <!-- Modal header -->
+                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                         <h3 class="text-xl font-bold justify-center text-gray-900 dark:text-white">
+                             Berkas Surat Keluar
+                         </h3>
+                         <button type="button"
+                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                             data-modal-hide="lihatBerkasTTD{{ $m->id }}">
+                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 14 14">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                     stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                             </svg>
+                             <span class="sr-only">Close modal</span>
+                         </button>
+                     </div>
+                     <!-- Modal body -->
+                     <div class="p-4 md:p-5 space-y-4">
+                         <iframe src="{{ asset('storage/' . $m->berkasTTD) }}" style="width: 100%" height="600"
                              id="myframe"></iframe>
 
                      </div>
@@ -257,7 +401,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                 </svg>
                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah Anda Yakin Ingin Menghapus Surat Masuk?</h3>
-                <a href="{{ url('hapus_surat_cuti/' .$m->id ) }}" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                <a href="{{ url('hapusSuratKeluar/' .$m->id ) }}" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                     Hapus
                 </a>
                 <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Batal</button>

@@ -6,7 +6,6 @@ use App\Http\Controllers\{
     pegawaiController,
     siswaController,
     surat_cuti_pegawaiController,
-    surat_dispen_siswaController,
     surat_tugas_pegawaiController,
     surat_keterangan_siswaController,
     surat_pensiun_pegawaiController,
@@ -50,46 +49,44 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('update_profile', [kepsekController::class, 'update_profile'])->name('update_profile');
     Route::get('surat_acc', [kepsekController::class, 'surat_acc'])->name('surat.acc');
 
+    Route::get('gantipass', [AuthController::class, 'gantiPass'])->name('gantipass');
+    Route::put('ganti-pass-baru', [AuthController::class, 'proses_ganti_pass'])->name('ganti-pass-baru');
+
+
 
 
 
     // surat Cuti Kepegawaian
-    Route::get('/pegawai-surat-cuti', [surat_cuti_pegawaiController::class, 'surat_cuti'])->name('pegawai-surat-cuti');
-    Route::get('/form-pegawai-surat-cuti', [surat_cuti_pegawaiController::class, 'form_surat_cuti'])->name('form-pegawai-surat-cuti');
-    Route::post('/store-pegawai-surat-cuti', [surat_cuti_pegawaiController::class, 'store_surat_cuti'])->name('store-pegawai-surat-cuti');
-    Route::get('hapus_surat_cuti/{id}', [surat_cuti_pegawaiController::class, 'hapus_surat_cuti'])->name('hapus_surat_cuti');
+    Route::get('/pegawai-surat-cuti', [pegawaiController::class, 'surat_cuti'])->name('pegawai-surat-cuti');
+    Route::get('/form-pegawai-surat-cuti', [pegawaiController::class, 'form_surat_cuti'])->name('form-pegawai-surat-cuti');
+    Route::post('/store-pegawai-surat-cuti', [pegawaiController::class, 'store_surat_cuti'])->name('store-pegawai-surat-cuti');
 
 
     // surat dispen siswa
-    Route::get('/siswa-surat-dispen', [surat_dispen_siswaController::class, 'surat_dispen'])->name('siswa-surat-dispen');
-    Route::get('/form-siswa-surat-dispen', [surat_dispen_siswaController::class, 'form_surat_dispen'])->name('form-siswa-surat-dispen');
-    Route::post('/store-siswa-surat-dispen', [surat_dispen_siswaController::class, 'store_surat_dispen'])->name('store-siswa-surat-dispen');
-    Route::get('hapus_surat_dispen/{id}', [surat_dispen_siswaController::class, 'hapus_surat_dispen'])->name('hapus_surat_dispen');
+    Route::get('/siswa-surat-dispen', [siswaController::class, 'surat_dispen'])->name('siswa-surat-dispen');
+    Route::get('/form-siswa-surat-dispen', [siswaController::class, 'form_surat_dispen'])->name('form-siswa-surat-dispen');
+    Route::post('/store-siswa-surat-dispen', [siswaController::class, 'store_surat_dispen'])->name('store-siswa-surat-dispen');
 
 
     // surat Tugas guru
-    Route::get('/pegawai-surat-tugas', [surat_tugas_pegawaiController::class, 'surat_tugas'])->name('pegawai-surat-tugas');
-    Route::get('/form-pegawai-surat-tugas', [surat_tugas_pegawaiController::class, 'form_surat_tugas'])->name('form-pegawai-surat-tugas');
-    Route::post('/store-pegawai-surat-tugas', [surat_tugas_pegawaiController::class, 'store_surat_tugas'])->name('store-pegawai-surat-tugas');
-    Route::get('hapus_surat_tugas/{id}', [surat_tugas_pegawaiController::class, 'hapus_surat_tugas'])->name('hapus_surat_tugas');
+    Route::get('/pegawai-surat-tugas', [pegawaiController::class, 'surat_tugas'])->name('pegawai-surat-tugas');
+    Route::get('/form-pegawai-surat-tugas', [pegawaiController::class, 'form_surat_tugas'])->name('form-pegawai-surat-tugas');
+    Route::post('/store-pegawai-surat-tugas', [pegawaiController::class, 'store_surat_tugas'])->name('store-pegawai-surat-tugas');
 
     // surat keterangan siswa
-    Route::get('/siswa-surat-keterangan', [surat_keterangan_siswaController::class, 'surat_keterangan'])->name('siswa-surat-keterangan');
-    Route::get('/form-siswa-surat-keterangan', [surat_keterangan_siswaController::class, 'form_surat_keterangan'])->name('form-siswa-surat-keterangan');
-    Route::post('/store-siswa-surat-keterangan', [surat_keterangan_siswaController::class, 'store_surat_keterangan'])->name('store-siswa-surat-keterangan');
-    Route::get('hapus_surat_keterangan/{id}', [surat_keterangan_siswaController::class, 'hapus_surat_keterangan'])->name('hapus_surat_keterangan');
+    Route::get('/siswa-surat-keterangan', [siswaController::class, 'surat_keterangan'])->name('siswa-surat-keterangan');
+    Route::get('/form-siswa-surat-keterangan', [siswaController::class, 'form_surat_keterangan'])->name('form-siswa-surat-keterangan');
+    Route::post('/store-siswa-surat-keterangan', [siswaController::class, 'store_surat_keterangan'])->name('store-siswa-surat-keterangan');
 
     // surat pensiun dini pegawai
-    Route::get('/pegawai-surat-pensiun', [surat_pensiun_pegawaiController::class, 'surat_pensiun'])->name('pegawai-surat-pensiun');
-    Route::get('/form-pegawai-surat-pensiun', [surat_pensiun_pegawaiController::class, 'form_surat_pensiun'])->name('form-pegawai-surat-pensiun');
-    Route::post('/store-pegawai-surat-pensiun', [surat_pensiun_pegawaiController::class, 'store_surat_pensiun'])->name('store-pegawai-surat-pensiun');
-    Route::get('hapus_surat_pensiun/{id}', [surat_pensiun_pegawaiController::class, 'hapus_surat_pensiun'])->name('hapus_surat_pensiun');
+    Route::get('/pegawai-surat-pensiun', [pegawaiController::class, 'surat_pensiun'])->name('pegawai-surat-pensiun');
+    Route::get('/form-pegawai-surat-pensiun', [pegawaiController::class, 'form_surat_pensiun'])->name('form-pegawai-surat-pensiun');
+    Route::post('/store-pegawai-surat-pensiun', [pegawaiController::class, 'store_surat_pensiun'])->name('store-pegawai-surat-pensiun');
 
     // surat Home Visit Siswa
-    Route::get('/pegawai-surat-home-visit', [surat_home_visit_pegawaiController::class, 'surat_home_visit'])->name('pegawai-surat-home-visit');
-    Route::get('/form-pegawai-surat-home-visit', [surat_home_visit_pegawaiController::class, 'form_surat_home_visit'])->name('form-pegawai-surat-home-visit');
-    Route::post('/store-pegawai-surat-home-visit', [surat_home_visit_pegawaiController::class, 'store_surat_home_visit'])->name('store-pegawai-surat-home-visit');
-    Route::get('hapus_surat_home_visit/{id}', [surat_home_visit_pegawaiController::class, 'hapus_surat_home_visit'])->name('hapus_surat_home_visit');
+    Route::get('/pegawai-surat-home-visit', [pegawaiController::class, 'surat_home_visit'])->name('pegawai-surat-home-visit');
+    Route::get('/form-pegawai-surat-home-visit', [pegawaiController::class, 'form_surat_home_visit'])->name('form-pegawai-surat-home-visit');
+    Route::post('/store-pegawai-surat-home-visit', [pegawaiController::class, 'store_surat_home_visit'])->name('store-pegawai-surat-home-visit');
 
     // surat pindah siswa
     Route::get('/siswa-surat-pindah', [siswaController::class, 'surat_pindah'])->name('siswa-surat-pindah');

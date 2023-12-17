@@ -18,7 +18,7 @@
             padding: 0 20px;
         }
 
-        
+
         h4,
         h5 {
             margin: 3px 0;
@@ -48,7 +48,7 @@
         }
 
         table {
-             max-width: 600px;
+            max-width: 600px;
             margin: 20px;
             margin-right: auto;
             margin-left: 10%;
@@ -59,11 +59,25 @@
             border-spacing: 0;
         }
 
-       
+
 
         th,
         td {
             text-align: left;
+        }
+         .table2 th{
+            border: 1px solid #000000;
+            
+            padding: 0;
+            text-align: center;
+
+        }
+        
+         .table2 td {
+            border-right: 1px solid #000000;
+            border-left: 1px solid #000000;
+            padding: 0;
+            text-align: center;
         }
 
         .signature {
@@ -166,42 +180,48 @@
                 </tr>
             </table> --}}
 
-            
-            <table border="1" style="width:95%; margin:auto;">
-                <tr style="padding:1px 1px;">
-                    <td>NO</td>
-                    <td>Nama</td>
-                    <td>NISN</td>
-                    <td> Jurusan</td>
-                    <td>Prodi yang diplih</td>
-                  </tr>
+
+            <table class="table2" style="width:95%; margin:auto;">
+                <thead>
+
+                    <tr>
+                        <th  style="text-align: center">NO</th>
+                        <th  style="text-align: center">Nama</th>
+                        <th  style="text-align: center">NISN</th>
+                        <th  style="text-align: center"> Jurusan</th>
+                        <th  style="text-align: center">Prodi yang diplih</th>
+                    </tr>
+                </thead>
+                <tbody style="border-left: 1px solid #000;border-bottom: 1px solid #000;">
+
                     @foreach ($nama_siswa as $index => $siswa)
-                  <tr style="padding:1px 1px;">
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $siswa }}</td>
-                    <td>{{ $nisn[$index] }}</td>
-                    <td>{{ $jurusan[$index] }}</td>
-                    <td>{{ $prodi[$index] }}</td>
-                  </tr>
-                  @endforeach
-                 
-                </table>
-             <p>Untuk mengikuti seleksi masuk perguruan tinggi STIKES Bina Mandiri Gorontalo melalui jalur Mandiri.</p>
-                Demikian surat tugas ini dibuat untuk dilaksanakan sebagaimana mestinya.
+                        <tr style="padding:1px 1px;">
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $loop->iteration }}.</td>
+                            <td>{{ $siswa }}</td>
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $nisn[$index] }}</td>
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $jurusan[$index] }}</td>
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $prodi[$index] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+            <p>Untuk mengikuti seleksi masuk perguruan tinggi STIKES Bina Mandiri Gorontalo melalui jalur Mandiri.</p>
+            Demikian surat tugas ini dibuat untuk dilaksanakan sebagaimana mestinya.
             </p>
         </div>
 
         <div class="signature">
             @php
-                    $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
-                    $tglSurat = $convertdate->format('d F Y');
-                @endphp
+                $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
+                $tglSurat = $convertdate->isoformat('D MMMM YYYY');
+            @endphp
             <p>Gorontalo, {{ $tglSurat }} <br>
                 Kepala SMK Negeri 3 Gorontalo <br>
                 <br><br><br>
-            <p>ISHAK A. PIU, S.Pd <br>
-                Pembina Tkt. I <br>
-                NIP. 197207201997021001 <br>
+            <p>{{ $nama_kepala }} <br>
+                {{ $golongan_kepala }} <br>
+                NIP. {{ $nip_kepala }} <br>
         </div>
 </body>
 

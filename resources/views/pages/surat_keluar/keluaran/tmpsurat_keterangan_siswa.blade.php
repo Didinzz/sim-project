@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,9 @@
             padding: 0 20px;
         }
 
-        h3, h4, h5 {
+        h3,
+        h4,
+        h5 {
             margin: 3px 0;
         }
 
@@ -46,14 +49,17 @@
             margin-top: 10px;
         }
 
-        table, th,{
-            padding: 5px;
-            text-align: left;
+        table,
+        th,
+        {
+        padding: 5px;
+        text-align: left;
         }
 
         .td1 {
             padding-right: 2px;
-            padding-top: 5px; /* Atur padding-right untuk mengurangi jarak */
+            padding-top: 5px;
+            /* Atur padding-right untuk mengurangi jarak */
         }
 
         .signature {
@@ -63,6 +69,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <table style="width: 100%;">
@@ -114,12 +121,12 @@
                     <td>{{ $npsn }}</td>
                 </tr>
                 <tr>
-                    <td class="td1">Kelas / Jurusan	</td>
+                    <td class="td1">Kelas / Jurusan </td>
                     <td>:</td>
                     <td>{{ $kelasjurusan }}</td>
                 </tr>
                 <tr>
-                    <td class="td1">Tempat/Tanggal Lahir	</td>
+                    <td class="td1">Tempat/Tanggal Lahir </td>
                     <td>:</td>
                     <td>{{ $ttl }}</td>
                 </tr>
@@ -138,20 +145,19 @@
             <p>Demikian surat keterangan ini dibuat, untuk digunakan sebagaimana mestinya.</p>
             <br>
             <div class="signature">
-                <div>
-                    @php
-                        $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSuratKeluar);
-                        $tglSurat = $convertdate->format('d F Y');
-                    @endphp
-                    <p>Gorontalo, {{ $tglSurat }}<br>
-                    Kepala Sekolah<br>
-                    <br><br><br><br><br>
-                    <p>Ishak A. Piu, S.Pd <br>
-                    Pembina Tkt 1 <br>
-                    NIP. 197207201997021001 <br>
-                </div>
+                @php
+                    $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
+                    $tglSurat = $convertdate->isoformat('D MMMM YYYY');
+                @endphp
+                <p>Gorontalo, {{ $tglSurat }} <br>
+                    Kepala SMK Negeri 3 Gorontalo <br>
+                    <br><br><br>
+                <p>{{ $nama_kepala }} <br>
+                    {{ $golongan_kepala }} <br>
+                    NIP. {{ $nip_kepala }} <br>
             </div>
         </div>
     </div>
 </body>
+
 </html>

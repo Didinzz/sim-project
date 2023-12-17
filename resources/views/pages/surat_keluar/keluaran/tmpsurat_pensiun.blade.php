@@ -173,19 +173,19 @@
     </div> --}}
             <table style="width: 100%;">
                 <tr>
-                    <td style="width: 200px; vertical-align: top;">
+                    <td style="width: 200px; vertical-align: top; margin: 0; padding: 0;">
                         <p>Mengetahui,</p>
-                        <p>Kepala SMK Negeri 3 Gorontalo</p>
-                        <br />
-                        <p>ISHAK A. PIU, S.Pd</p>
-                        <p>Pembina Tkt.I</p>
-                        <p>NIP: 197207201997021001</p>
+                        Kepala Sekolah</p>
+                        <p style="margin: 0;"><strong>{{ $nama_kepala }}</strong></p>
+                        <br>
+                        <p>{{ $golongan_kepala }} </p>
+                        <p style="margin: 0;">NIP. {{ $nip_kepala }}</p>
                     </td>
                     <td style="width: 150px;padding-left: 5%; vertical-align: top;">
                         @php
-                    $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
-                    $tglSurat = $convertdate->format('d F Y');
-                @endphp
+                            $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
+                            $tglSurat = $convertdate->isoformat('D MMMM YYYY');
+                        @endphp
                         <p>Gorontalo,{{ $tglSurat }} <br>
                             Yang Membuat Permohonan <br>
                             <br><br>

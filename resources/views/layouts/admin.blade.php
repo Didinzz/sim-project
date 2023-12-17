@@ -30,6 +30,7 @@
 </head>
 
 <body class="bg-white dark:bg-gray-900">
+    {{-- <div modal-backdrop="" class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"></div> --}}
 
     @include('components.navbar')
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
@@ -50,7 +51,7 @@
 
 
     <script src="{{ asset('assets/js/flowbite.min.js') }}"></script>
-    <script>
+   <script>
         const sidebarBackdrop = document.getElementById('sidebarBackdrop');
         const navbarDropdown = document.getElementById('navbar-dropdown');
         document.getElementById('toggle-nav').addEventListener('click', function() {
@@ -65,6 +66,9 @@
             navbarDropdown.classList.toggle('hidden');
             sidebarBackdrop.classList.toggle('hidden');
         });
+        // document.getElementById('print-window').addEventListener('click', function() {
+        //     window.print();
+        // });
     </script>
 
 </body>

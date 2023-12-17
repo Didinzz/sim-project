@@ -82,6 +82,26 @@
             padding: 0
         }
 
+        .table-type-1 {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-type-1 th{
+            border: 1px solid #000000;
+            
+            padding: 0;
+            text-align: center;
+
+        }
+        .table-type-1 td {
+            border-right: 1px solid #000000;
+            border-left: 1px solid #000000;
+            padding: 0;
+            text-align: center;
+        }
+
 
 
 
@@ -130,7 +150,7 @@
     <div class="container">
         <div class="content">
             <p>Yang bertanda tangan di bawah ini Kepala SMK Negeri 3 Gorontalo dengan ini menerangkan bahwa :</p>
-            <table border="1" style="width: 100%; padding: 2px 0px;">
+            {{-- <table border="1" style="width: 100%; padding: 2px 0px;">
                 <tr>
                     <td><strong>No</strong> </td>
                     <td><strong>Nama</strong></td>
@@ -145,6 +165,28 @@
                         <td style="margin-bottom: 5px;">{{ $utusan[$index] }}</td>
                     </tr>
                 @endforeach
+            </table> --}}
+            
+            {{--  --}}
+            <table class="table-type-1">
+                <thead>
+                    <tr>
+                        <th style="text-align: center" >No.</th>
+                        <th style="text-align: center">Nama</th>
+                        <th style="text-align: center">Kelas/Jurusan</th>
+                        <th style="text-align: center">Asal Sekolah</th>
+                    </tr>
+                </thead>
+                <tbody style="border-left: 1px solid #000;border-bottom: 1px solid #000;">
+                    @foreach ($nama_guru as $index => $guru)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $guru }}</td>
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $sekolah[$index] }}</td>
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $utusan[$index] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
 
             <br>
@@ -154,13 +196,16 @@
             <br>
             <div class="signature">
                 <div>
-                    <p>Gorontalo, 1 Septmber 2023<br>
+                     @php
+                            $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
+                            $tglSurat = $convertdate->isoformat('D MMMM YYYY');
+                        @endphp
+                    <p>Gorontalo, {{ $tglSurat }}<br>
                         Kepala Sekolah<br>
                         <br><br><br><br><br>
-                    <p><Strong>Ishak A. Piu, S.Pd </Strong><br>
-                        Pembina Tkt 1 <br>
-                        NIP. 197207201997021001 <br>
-                        <br><br><br><br><br>
+                    <p><Strong>{{ $nama_kepala }}</Strong><br>
+                        {{ $golongan_kepala }} </p>
+                       <p> NIP. {{ $nip_kepala }}</p> 
 
                 </div>
             </div>

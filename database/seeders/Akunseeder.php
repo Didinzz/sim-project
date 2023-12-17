@@ -18,6 +18,7 @@ class Akunseeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
+                'Golongan' => 'Pembina Tkt 1 ',
                 'ttd' => 'default.png',
                 'role' => '1',
                 'password' => bcrypt('8520'),
@@ -25,6 +26,7 @@ class Akunseeder extends Seeder
             [
                 'name' => 'Kepala Sekolah',
                 'email' => 'kepsek@gmail.com',
+                'Golongan' => 'Pembina Tkt 1 ',
                 'ttd' => 'default.png',
                 'role' => '2',
                 'password' => bcrypt('asdf'),

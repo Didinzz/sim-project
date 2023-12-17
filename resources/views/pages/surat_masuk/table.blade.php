@@ -1,8 +1,51 @@
  @extends('layouts.admin')
- @section('title', 'Dashboard')
+ @section('title', 'Surat Masuk')
  @section('suratmasuk', 'bg-gray-300 dark:bg-gray-700')
 
  @section('content')
+  @if (session()->has('tambah'))
+        <div id="toast-success"
+            class="mt-3 flex items-center w-full max-w-full p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-md  dark:text-gray-400 dark:bg-gray-800"
+            role="alert">
+            <div
+                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                </svg>
+                <span class="sr-only">Check icon</span>
+            </div>
+            <div class="ms-3 text-sm font-normal">{{ Session('tambah') }}</div>
+            <button type="button"
+                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                data-dismiss-target="#toast-success" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    @endif
+    @if (session()->has('hapus'))
+        <div id="toast-warning" class="flex items-center w-full max-w-full p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg dark:bg-orange-700 dark:text-orange-200">
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"/>
+        </svg>
+        <span class="sr-only">Warning icon</span>
+    </div>
+    <div class="ms-3 text-sm font-normal">{{ Session('hapus') }}</div>
+    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-warning" aria-label="Close">
+        <span class="sr-only">Close</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+        </svg>
+    </button>
+</div>
+    @endif
      <div
          class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
          <div class="w-full mb-1">
@@ -11,7 +54,7 @@
              </div>
              <div class="sm:flex space-between">
                  <div class="items-center mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                     <form class="lg:pr-3" action="{{ url('table') }}" method="GET">
+                     <form class="lg:pr-3" action="{{ url('pengajuan') }}" method="GET">
                          <label for="users-search" class="sr-only">Search</label>
                          <div class="flex items-center">
                              <input type="text" name="search"
@@ -220,7 +263,7 @@
              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
              <div class="relative p-4 w-full max-w-2xl max-h-full">
                  <!-- Modal content -->
-                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 max-w-3xl mx-auto">
                      <!-- Modal header -->
                      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                          <h3 class="text-xl font-bold justify-center text-gray-900 dark:text-white">
@@ -239,7 +282,7 @@
                      </div>
                      <!-- Modal body -->
                      <div class="p-4 md:p-5 space-y-4">
-                         <iframe src="{{ asset('storage/' . $m->berkas) }}" style="width: 100%" height="500"
+                         <iframe src="{{ asset('storage/' . $m->berkas) }}" style="width: 100%" height="600"
                              id="myframe"></iframe>
 
                      </div>
@@ -254,7 +297,7 @@
              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
              <div class="relative p-4 w-full max-w-2xl max-h-full">
                  <!-- Modal content -->
-                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 max-w-3xl mx-auto">
                      <!-- Modal header -->
                      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                          <h3 class="text-xl font-bold justify-center text-gray-900 dark:text-white">
@@ -273,7 +316,7 @@
                      </div>
                      <!-- Modal body -->
                      <div class="p-4 md:p-5 space-y-4">
-                         <iframe src="{{ asset('storage/' . $m->lembarDisposisi) }}" style="width: 100%" height="500"
+                         <iframe src="{{ asset('storage/' . $m->lembarDisposisi) }}" style="width: 100%" height="600"
                              id="myframe"></iframe>
                      </div>
                  </div>

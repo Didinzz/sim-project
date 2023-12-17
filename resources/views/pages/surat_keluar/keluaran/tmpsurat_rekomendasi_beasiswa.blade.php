@@ -18,7 +18,7 @@
             padding: 0 20px;
         }
 
-        
+
         h4,
         h5 {
             margin: 3px 0;
@@ -48,7 +48,7 @@
         }
 
         table {
-             max-width: 600px;
+            max-width: 600px;
             margin: 20px;
             margin-right: auto;
             margin-left: 10%;
@@ -59,7 +59,7 @@
             border-spacing: 0;
         }
 
-       
+
 
         th,
         td {
@@ -174,15 +174,15 @@
 
         <div class="signature">
             @php
-                    $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
-                    $tglSurat = $convertdate->format('d F Y');
-                @endphp
+                $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
+                $tglSurat = $convertdate->isoformat('D MMMM YYYY');
+            @endphp
             <p>Gorontalo, {{ $tglSurat }} <br>
                 Kepala SMK Negeri 3 Gorontalo <br>
                 <br><br><br>
-            <p>ISHAK A. PIU, S.Pd <br>
-                Pembina Tkt. I <br>
-                NIP. 197207201997021001 <br>
+            <p>{{ $nama_kepala }} <br>
+                {{ $golongan_kepala }} <br>
+                NIP. {{ $nip_kepala }} <br>
         </div>
 </body>
 

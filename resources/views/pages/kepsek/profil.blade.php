@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Dashboard')
+@section('title', 'Profile')
 @section('profile', 'bg-gray-300 dark:bg-gray-700')
 
 @section('content')

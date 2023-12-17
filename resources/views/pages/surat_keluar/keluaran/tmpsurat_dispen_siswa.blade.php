@@ -11,8 +11,6 @@
             padding: 0;
         }
 
-
-
         .tengah {
             text-align: center;
             padding: 0 20px;
@@ -49,16 +47,21 @@
             margin-top: 20px;
         }
 
-        .table-type-1 th,
-        .table-type-1 td {
+        .table-type-1 th{
             border: 1px solid #000000;
-            padding: 8px;
-            text-align: left;
+            
+            padding: 0;
+            text-align: center;
+
+        }
+        .table-type-1 td {
+            border-right: 1px solid #000000;
+            border-left: 1px solid #000000;
+            padding: 0;
+            text-align: center;
         }
 
-        .table-type-1 th {
-            background-color: #f2f2f2;
-        }
+       
 
         .table-type-2 {
             width: 80%;
@@ -80,8 +83,6 @@
 
         hr {
             border: 1px solid #000;
-            /* You can adjust the thickness and color here */
-            /* margin-top: 20px;     */
             margin-bottom: 40px;
         }
     </style>
@@ -109,7 +110,6 @@
         </tr>
     </table>
 
-    {{-- <hr> --}}
     <div style="border-width: 1.5px; border-style: solid; border-color: black; width:100%"></div>
 
     <div style="border-width: 0.5px; border-style: solid; border-color: black; margin-top: 2px; width:100%"></div>
@@ -127,27 +127,21 @@
             <table class="table-type-1">
                 <thead>
                     <tr>
-                        <th style="text-align: center">No.</th>
-                        <th>Nama</th>
-                        <th>Kelas/Jurusan</th>
-                        <th>Asal Sekolah</th>
+                        <th style="text-align: center" >No.</th>
+                        <th style="text-align: center">Nama</th>
+                        <th style="text-align: center">Kelas/Jurusan</th>
+                        <th style="text-align: center">Asal Sekolah</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="border-left: 1px solid #000;border-bottom: 1px solid #000;">
                     @foreach ($nama_siswa as $index => $siswa)
                         <tr>
-                            <td style="text-align: center">{{ $loop->iteration }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $siswa }}</td>
-                            <td>{{ $kelas_siswa[$index] }}</td>
-                            <td>{{ $asalSekolah[$index] }}</td>
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $kelas_siswa[$index] }}</td>
+                            <td style="border-right: 1px solid #000; text-align: center;">{{ $asalSekolah[$index] }}</td>
                         </tr>
-                        @endforeach
-                            {{-- <tr>
-                        <td>2.</td>
-                        <td>Seluruh Siswa</td>
-                        <td>XI TKRO 1</td>
-                        <td>SMKN 3 Gorontalo</td>
-                    </tr> --}}
+                    @endforeach
                 </tbody>
             </table>
 
@@ -177,18 +171,16 @@
             <div class="signature">
                 @php
                     $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
-                    $tglSurat = $convertdate->format('d F Y');
+                    $tglSurat = $convertdate->isoformat('D MMMM YYYY');
                 @endphp
-                <p>
-                    Gorontalo, {{ $tglSurat }} <br>
+                <p>Gorontalo, {{ $tglSurat }} <br>
                     Kepala SMK Negeri 3 Gorontalo <br>
                     <br><br><br>
                 </p>
-                <p> ISHAK A. PIU, S.Pd <br>
-                    Pembina Tkt. I <br>
-                    NIP. 197207201997021001
+                <p>{{ $nama_kepala }} <br>
+                    {{ $golongan_kepala }} <br>
+                    NIP. {{ $nip_kepala }} <br>
                 </p>
-               
             </div>
         </div>
     </div>

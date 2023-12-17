@@ -59,7 +59,7 @@
           <tr>
             <td class="td1">Nama</td>
             <td class="td1">:</td>
-            <td class="td1">{{ $nama }}</td>
+            <td class="td1">{{ $nama_guru }}</td>
           </tr>
           <tr>
             <td class="td1">NIP.</td>
@@ -107,19 +107,19 @@
                 <p>Mengetahui,</p>
                 <p>Kepala SMK Negeri 3 Gorontalo</p>
                 <br /><br /><br /><br />
-                <p>ISHAK A. PIU, S.Pd</p>
-                <p>Pembina Tkt.I</p>
-                <p>NIP: 197207201997021001</p>
+                <p>{{ $nama_kepala }}</p>
+                <p>{{ $golongan_kepala }}</p>
+                <p>NIP: {{ $nip_kepala }}</p>
             </td>
             <td style="width: 150px;padding-left: 5%; vertical-align: top;">
               @php
-                    $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSuratKeluar);
-                    $tglSurat = $convertdate->format('d F Y');
+                    $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
+                    $tglSurat = $convertdate->isoformat('D MMMM YYYY');
                 @endphp
                 <p>Gorontalo, {{ $tglSurat }}</p>
                 <p>Yang Bermohon</p>
                 <br /><br /><br /><br />
-                <p>{{ $nama }}</p>
+                <p>{{ $nama_guru }}</p>
                 <p>NIP: {{ $nip }}</p>
             </td>
           </tr>

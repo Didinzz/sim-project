@@ -154,15 +154,15 @@
 
         <div class="signature">
              @php
-                    $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
-                    $tglSurat = $convertdate->format('d F Y');
-                @endphp
+                            $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
+                            $tglSurat = $convertdate->isoformat('D MMMM YYYY');
+                        @endphp
             <p>Gorontalo, {{ $tglSurat }} <br>
                 Kepala SMK Negeri 3 Gorontalo <br>
                 <br><br><br>    
-            <p>ISHAK A. PIU, S.Pd <br>
-                Pembina Tkt. I <br>
-                NIP. 197207201997021001 <br>
+            <p>{{ $nama_kepala }} <br>
+                {{ $golongan_kepala }} <br>
+                NIP. {{ $nip_kepala }} <br>
         </div>
 </body>
 

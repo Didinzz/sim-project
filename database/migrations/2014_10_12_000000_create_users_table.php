@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('nip')->default('00000');
+            $table->string('Golongan')->default('Pembina Tkt 1 ');
             $table->string('ttd')->default('default.png');
             $table->integer('role');
             $table->timestamp('email_verified_at')->nullable();

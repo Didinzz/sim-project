@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Dashboard')
+@section('title', 'Form Surat Tugas')
 @section('suratTugas', 'bg-gray-300 dark:bg-gray-700')
 
 @section('content')
@@ -9,49 +9,54 @@
         <h1 class="text-2xl flex justify-center font-bold text-black capitalize dark:text-white">Berkas Surat Keluar</h1>
         <form action="{{ route('store-pegawai-surat-tugas') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="username">Nomor
                         Berkas</label>
                     <input id="username" name="nomor_berkas" type="text"
-                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-slate-500  focus:outline-none focus:ring">
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-slate-500  focus:outline-none focus:ring"
+                        required placeholder="Nomor Berkas">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="emailAddress">Alamat
                         Penerima</label>
                     <input id="emailAddress" name="penerima" type="text"
-                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-slate-500  focus:outline-none focus:ring">
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-slate-500  focus:outline-none focus:ring"
+                        required placeholder="Alamat Penerima">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="password">Tanggal
                         Surat</label>
-                    <input id="date" name="tanggal" type="date" min="{{ now()->format('Y-m-d') }}"
+                    <input required id="date" name="tanggal" type="date" min="{{ now()->format('Y-m-d') }}"
                         value="{{ now()->format('Y-m-d') }}"
                         class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         for="passwordConfirmation">Perihal</label>
-                    <input id="passwordConfirmation" name="perihal" type="text"
-                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    <input required id="passwordConfirmation" name="perihal" type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                        placeholder="Perihal">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         for="passwordConfirmation">Nomor Petunjuk</label>
-                    <input id="passwordConfirmation" name="petunjuk" type="text"
-                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    <input required id="passwordConfirmation" name="petunjuk" type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                        placeholder="Nomor Petunjuk">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         for="passwordConfirmation">Nomor Paket</label>
-                    <input id="passwordConfirmation" name="nomor_paket" type="text"
-                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-50  border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600  focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    <input required id="passwordConfirmation" name="nomor_paket" type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                        placeholder="Nomro Paket">
                 </div>
 
-                <div class="col-span-6 sm:col-span-3">
+                <div class="col-span-6 sm:col-span-3 hidden">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="emailAddress">Tipe
                         Surat</label>
                     <input id="text" name="tipeSurat" type="text"
@@ -62,131 +67,134 @@
             </div>
 
 
-                {{-- Surat Tugas Guru--}}
+            {{-- Surat Tugas Guru --}}
 
 
 
-                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
-                <h4 class="text-2xl font-bold dark:text-white">Surat Tugas Guru</h4>
-                <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-700">
-                <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="nomor_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
-                            Surat</label>
-                        <input type="text" name="nomor_surat" id="nomor_surat"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="005/DIKBUD/SMK1/TU/XI/" value="005/DIKBUD/SMK1/TU/XI/" required>
-                    </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="nomor_surat"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
-                            Surat </label>
-                        <input type="date" name="tanggalSurat" id="nomor_surat" min="{{ now()->format('Y-m-d') }}"
-                            value="{{ now()->format('Y-m-d') }}"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="005/DIKBUD/SMK1/TU/XI/" value="005/DIKBUD/SMK1/TU/XI/" required>
-                    </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="nomor_surat"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Berdasarkan Surat Dari
-                        </label>
-                        <input type="text" name="SuratDari" id="nomor_surat"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="005/DIKBUD/SMK1/TU/XI/" value="" required>
-                    </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="perihal"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Perihal</label>
-                        <input type="text" name="perihal" id="perihal"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Tanggal Surat" required>
-                    </div>
+            <hr class="font-bold broder-t-4 mb-2 mt-4 border-y-black dark:border-gray-300">
 
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="nomor_perihal"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
-                            Perihal</label>
-                        <input type="text" name="nomor_perihal" id="nomor_perihal"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="005/DIKBUD/SMK1/TU/XI/" value="005/DIKBUD/SMK1/TU/XI/" required>
+            <h4 class="text-2xl font-bold dark:text-white">Surat Tugas Guru</h4>
+            <hr class="font-bold broder-t-4 mb-2 mt-4 border-y-black dark:border-gray-300">
+
+            <div class="grid grid-cols-6 gap-6 ">
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="nomor_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                        Surat</label>
+                    <input type="text" name="nomor_surat" id="nomor_surat"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="005/DIKBUD/SMK1/TU/XI/" value="005/DIKBUD/SMK1/TU/XI/" required>
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="nomor_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                        Surat </label>
+                    <input type="date" name="tanggalSurat" id="nomor_surat" min="{{ now()->format('Y-m-d') }}"
+                        value="{{ now()->format('Y-m-d') }}"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="005/DIKBUD/SMK1/TU/XI/" value="005/DIKBUD/SMK1/TU/XI/" required>
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="nomor_surat"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Berdasarkan Surat Dari
+                    </label>
+                    <input type="text" name="SuratDari" id="nomor_surat"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Surat Berdasarkan dari" value="" required>
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="perihal"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Perihal</label>
+                    <input type="text" name="perihal" id="perihal"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Perihal" required>
+                </div>
+
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="nomor_perihal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                        Perihal</label>
+                    <input type="text" name="nomor_perihal" id="nomor_perihal"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Nomor Perihal" value="005/DIKBUD/SMK1/TU/XI/" required>
+                </div>
+                <div class="col-span-6 sm:col-span-8">
+                    <hr class="font-bold broder-t-4 mb-2 mt-4 border-y-black dark:border-gray-300">
+
+                    <div class="flex justify-between">
+                        <h4 class="text-2xl font-bold dark:text-white">Data Guru</h4>
+                        <button id="tambahSiswaBtn" onclick="tambahInput()"
+                            class="text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            type="button">Tambah Guru</button>
                     </div>
-                    <div class="col-span-6 sm:col-span-8">
-                        <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
-                        <div class="flex justify-between">
-                            <h4 class="text-2xl font-bold dark:text-white">Data Guru</h4>
-                            <button id="tambahSiswaBtn" onclick="tambahInput()"
-                                class="text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                type="button">Tambah Guru</button>
-                        </div>
-                        <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-700">
-                        <div id="Container">
-                            <div class="sm:flex justify-stretch gap-4" id="inputGroup1">
-                                <div class="w-full">
-                                    <label for="nama_siswa_1"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                                        Guru 1</label>
-                                    <input type="text" name="nama_guru[]"
-                                        class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Nama Siswa" required>
-                                </div>
-                                <div class="w-full">
-                                    <label for="kelas_siswa_1"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jabatan</label>
-                                    <input type="text" name="jabatan[]"
-                                        class="shadow-sm flex-shrink-0 bg-gray-50 w-full border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Kelas Siswa" required>
-                                </div>
-                                <div class="w-full">
-                                    <label for="keterangan_1"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-                                    <input type="text" name="keterangan[]"
-                                        class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                        placeholder="Asal Sekolah" required>
-                                </div>
+                    <hr class="font-bold broder-t-4 mb-2 mt-4 border-y-black dark:border-gray-300">
+
+                    <div id="Container">
+                        <div class="sm:flex justify-stretch gap-4" id="inputGroup1">
+                            <div class="w-full">
+                                <label for="nama_siswa_1"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                                    Guru 1</label>
+                                <input type="text" name="nama_guru[]"
+                                    class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Nama Guru" required>
+                            </div>
+                            <div class="w-full">
+                                <label for="kelas_siswa_1"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jabatan</label>
+                                <input type="text" name="jabatan[]"
+                                    class="shadow-sm flex-shrink-0 bg-gray-50 w-full border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Jabatan" required>
+                            </div>
+                            <div class="w-full">
+                                <label for="keterangan_1"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                                <input type="text" name="keterangan[]"
+                                    class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Keterangan" required>
                             </div>
                         </div>
-                        <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-700">
                     </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="kegiatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                            Kegiatan</label>
-                        <input type="text" name="kegiatan" id="kegiatan"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Kegiatan" required>
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="waktu_dilaksanakan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Jam Pelaksanaan</label>
-                        <input type="text" name="waktu_dilaksanakan"
-                            class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Nama Hari" value="00:00 Wita s.d selesai" required>
-                    </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="waktu_dilaksanakan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Tanggal Dilaksanakan</label>
-                        <input type="text" name="tgl_dilaksanakan"
-                            class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Nama Hari" value="Senin, 14 s/d 16 Oktober 2023" required>
-                    </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="tempat_dilaksanakan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat
-                            Dilaksanakan</label>
-                        <input type="text" name="tempat_dilaksanakan" id="tempat_dilaksanakan"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Tempat Dilaksanakan" required>
-                    </div>
-
                 </div>
 
-
-                <div class="flex justify-end mt-6">
-                    <button
-                        class="px-6 py-2 leading-5 text-white font-bold transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
+                
+                <div class="col-span-6 sm:col-span-3 ">
+                    <label for="kegiatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                        Kegiatan</label>
+                    <input type="text" name="kegiatan" id="kegiatan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Nama Kegiatan" required>
                 </div>
+
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="waktu_dilaksanakan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Jam Pelaksanaan</label>
+                    <input type="text" name="waktu_dilaksanakan"
+                        class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Jam Pelaksanaan Kegiatan" value="00:00 Wita s.d selesai" required>
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="waktu_dilaksanakan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Tanggal Dilaksanakan</label>
+                    <input type="text" name="tgl_dilaksanakan"
+                        class="shadow-sm flex-shrink-0 bg-gray-50 border w-full border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Tanggal Dilaksanakan" value="Senin, 14 s/d 16 Oktober 2023" required>
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="tempat_dilaksanakan"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat
+                        Dilaksanakan</label>
+                    <input type="text" name="tempat_dilaksanakan" id="tempat_dilaksanakan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Tempat Dilaksanakan" required>
+                </div>
+                
+
+            </div>
+
+
+            <div class="flex justify-end mt-6">
+                <button
+                    class="px-6 py-2 leading-5 text-white font-bold transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-800 focus:outline-none focus:blue-gray-600"><i
+                        class="fa-solid fa-plus mr-1 mx-auto"></i>Buat Surat</button>
+            </div>
             </div>
         </form>
 
