@@ -182,7 +182,7 @@
                                         <li class="mt-2">
                                             <a href="{{ route('pegawai-surat-pensiun') }}"
                                                 class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-700 @yield('pensiun')">
-                                                Surat Pensiun Dini beleum selesai
+                                                Surat Pensiun Dini
                                             </a>
                                         </li>
                                         <li class="mt-2">

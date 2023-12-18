@@ -38,11 +38,11 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // $request->session()->regenerate();
             $user = Auth::user();
-            Session::flash('berhasil', 'Berhasil Login');
+            Session::flash('berhasil', 'Anda Berhasil Login');
 
             return redirect('')->with(['user' => $user]);
         } else {
-            Session::flash('gagal', 'Email dan Password Salah');
+            Session::flash('gagal', 'Email atau Password tidak valid');
 
             return redirect('login')->withErrors('Email dan Password yang anda masukkan tidak valid');
         }

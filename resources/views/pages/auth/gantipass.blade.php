@@ -72,7 +72,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Password Baru" required>
                     <span id="toggle-password" class="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer">
-                        <i class="fa fa-eye-slash text-gray-400 hover:text-gray-600"></i>
+                        <i class="fa fa-eye-low-vision text-gray-400 hover:text-gray-600"></i>
                     </span>
                 </div>
             </div>
@@ -108,12 +108,12 @@
 
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                icon.classList.remove('fa-eye-slash');
+                icon.classList.remove('fa-eye-low-vision');
                 icon.classList.add('fa-eye');
             } else {
                 passwordInput.type = 'password';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
+                 icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-low-vision');
             }
         }
     </script>
