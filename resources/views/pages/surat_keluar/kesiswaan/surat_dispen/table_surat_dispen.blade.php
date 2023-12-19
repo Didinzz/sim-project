@@ -374,7 +374,7 @@
                      </div>
                      <!-- Modal body -->
                      <div class="p-4 md:p-5 space-y-4">
-                         <iframe src="{{ asset('storage/' . $m->berkasTTD) }}" style="width: 100%" height="500"
+                         <iframe src="{{ asset('storage/' . $m->berkasTTD) }}" style="width: 100%" height="600"
                              id="myframe"></iframe>
 
                      </div>

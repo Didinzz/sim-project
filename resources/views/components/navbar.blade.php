@@ -14,8 +14,7 @@
                 </button>
                 <a href="/" class="flex items-center ml-2 md:mr-24">
                     <img src="{{ asset('assets/img/logostm1.png') }}" class="h-16 w-auto mr-3"/>
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">SMK
-                        Negeri 3 <br>Kota Gorontalo</span>
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"><span class="font-bold">SISM</span> SMK 3 <br>Kota Gorontalo</span>
                 </a>
             </div>
             <div class="flex items-center">
