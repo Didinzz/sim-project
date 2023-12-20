@@ -20,11 +20,29 @@ class adminController extends Controller
         $belum = keluar::where('status_persetujuan', 'belum')->count();
         $count = keluar::where('status_persetujuan', 'diajukan')->count();
         $countacc = keluar::where('status_persetujuan', 'diterima')->count();
+        $belumDiajukan = keluar::where('status_persetujuan', 'belum')->count();
         $totMasuk = masuk::count();
         $totKeluar = keluar::count();
 
 
-        return view('pages.index')->with(['user' => $user, 'totalAjuan' => $count, 'acc' => $countacc, 'belum' => $belum, 'masuk' => $totMasuk, 'keluar' => $totKeluar]);
+        return view('pages.index')->with(['user' => $user, 'totalAjuan' => $count, 'acc' => $countacc, 'belum' => $belum, 'masuk' => $totMasuk, 'keluar' => $totKeluar, 'belumDiajukan' => $belumDiajukan]);
+    }
+
+    public function totSuratBelum(Request $request)
+    {
+        $keyword = $request->input('search');
+
+        $data = keluar::where('status_persetujuan', 'belum')->when($keyword, function ($query) use ($keyword) {
+            $query->where(function ($query) use ($keyword) {
+                $query->where('nomor_berkas', 'like', "%$keyword%")
+                    ->orWhere('alamat_penerima', 'like', "%$keyword%")
+                    ->orWhere('nomor_petunjuk', 'like', "%$keyword%")
+                    ->orWhere('nomor_paket', 'like', "%$keyword%")
+                    ->orWhere('perihal', 'like', "%$keyword%");
+            });
+        })->orderBy('tanggal', 'desc')->paginate(10);
+
+        return view('pages.surat_keluar.totalSuratBelum')->with(['data' => $data]);
     }
 
     public function table()

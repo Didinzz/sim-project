@@ -8,7 +8,7 @@
             <h1 class="font-bold text-2xl text-black dark:text-white">Selamat datang {{ $user->name }}</h1>
         </div>
     </div>
-     @if (session()->has('berhasil'))
+    @if (session()->has('berhasil'))
         <div id="toast-success"
             class="flex items-center w-full max-w-full p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-md  dark:text-gray-400 dark:bg-gray-800"
             role="alert">
@@ -39,7 +39,7 @@
         <div
             class="block p-4 bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mx-auto">
             <div class="flex flex-wrap -mx-3">
-                <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-6 mx-auto my-4">
+                <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-4 mx-auto my-2">
                     <!-- Metric Card 1 -->
                     <div
                         class="bg-white border border-gray-400 rounded shadow p-4 dark:bg-gray-800 dark:border-gray-700 mx-auto my-4">
@@ -57,7 +57,7 @@
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-6 mx-auto my-4">
+                <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-4 mx-auto my-2">
                     <!-- Metric Card 2 -->
                     <div
                         class="bg-white border border-gray-400 rounded shadow p-4 dark:bg-gray-800 dark:border-gray-700 mx-auto my-4">
@@ -75,7 +75,7 @@
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-6 mx-auto my-4">
+                <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-4 mx-auto my-2">
                     <!-- Metric Card 3 -->
                     <div
                         class="bg-white border border-gray-400 rounded shadow p-4 dark:bg-gray-800 dark:border-gray-700 mx-auto my-4">
@@ -88,6 +88,28 @@
                                 <h5 class="font-bold uppercase text-gray-700 dark:text-gray-300">Total Yang Diajukan</h5>
                                 <h3 class="font-bold text-3xl text-gray-800 dark:text-white">{{ $totalAjuan }}<span
                                         class="text-yellow-600 ml-2"><i class="fas fa-clock fa-xs"></i></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-4 my-1">
+                    <!-- Metric Card 3 -->
+                    <div
+                        class="bg-white border border-gray-400 rounded shadow p-4 dark:bg-gray-800 dark:border-gray-700 mx-auto my-4">
+                        <div class="flex items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-blue-500 text-white">
+                                    <i class="fas fa-file-alt fa-2x fa-fw"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h5 class="font-bold uppercase text-gray-700 dark:text-gray-300">Total Surat Yang Belum Di
+                                    Ajukan</h5>
+                                <a href="{{ route('total-surat-belum') }}">
+                                    <h3 class="font-bold text-3xl text-gray-800 dark:text-white">{{ $belumDiajukan }}
+                                        <span class="text-blue-500 ml-2"><i class="fas fa-clock fa-xs"></i></span>
+                                    </h3>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -139,7 +161,8 @@
                         class="bg-white border border-gray-400 rounded shadow p-4 dark:bg-gray-800 dark:border-gray-700 mx-auto my-4">
                         <div class="flex items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-blue-500"><i class="fas fa-signature fa-2x fa-fw fa-inverse"></i>
+                                <div class="rounded p-3 bg-blue-500"><i
+                                        class="fas fa-signature fa-2x fa-fw fa-inverse"></i>
                                 </div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
@@ -147,7 +170,7 @@
                                 <h3 class="font-bold text-3xl text-gray-800 dark:text-white">{{ $acc }} <span
                                         class="text-blue-500">
                                         {{-- <i class="fas fa-caret-up"></i></span> --}}
-                                    </h3>
+                                </h3>
                             </div>
                         </div>
                     </div>

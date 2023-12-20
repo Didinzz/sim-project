@@ -51,7 +51,7 @@
 
             <p>
                 Kepada<br />
-                Yth. Kepala Dinas Pendidikan, Kebudayaan, Pemuda dan Olahraga Provinsi
+                Yth. Kepala Dinas Pendidikan dan Kebudayaan
                 Gorontalo<br />
                 Di - <br />
                 Tempat
