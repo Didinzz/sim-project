@@ -95,9 +95,9 @@
             <td style="text-align: center; ">
                 <img src="{{ public_path('assets/img/LOGO PROVINSI GORONTALO.png') }}" width="90px">
             </td>
-            <td style="text-align: center; padding-bottom: 0;">
-                <h4>PEMERINTAH PROVINSI GORONTALO</h4>
-                <h4 style="">DINAS PENDIDIKAN, KEBUDAYAAN, PEMUDA DAN OLAHRAGA</h4>
+             <td style="text-align: center; padding-bottom: 0;">
+                <h3 style=" margin-bottom:2;">PEMERINTAH PROVINSI GORONTALO</h3>
+                <h3 style=" margin: auto 2;">DINAS PENDIDIKAN DAN KEBUDAYAAN</h3>
                 <h4>SEKOLAH MENENGAH KEJURUAN <br>
                     (SMK NEGERI 3 GORONTALO)</h4>
                 <h5 style="margin: 0;">Jl. Bali No. 2 Kelurahan Pulubala Kec. Kota Tengah <br>

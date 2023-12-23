@@ -58,7 +58,7 @@
                         Surat</label>
                     <input id="text" name="tipeSurat" type="text"
                         class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 focus:border-slate-500  focus:outline-none focus:ring"
-                        value="Surat Dispen">
+                        value="Surat Dispen Guru">
                 </div>
 
             </div>

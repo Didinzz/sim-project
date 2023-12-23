@@ -43,6 +43,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('diterima/{id}', [AdminController::class, 'diterima'])->name('diterima');
     Route::get('hapusSuratKeluar/{id}', [AdminController::class, 'hapusSuratKeluar'])->name('hapus.surat.keluar');
 
+
+    // tot surat belu
+    Route::get('/Total_surat_belum', [AdminController::class, 'totSuratBelum'])->name('total-surat-belum');
+
+
+
+
     // Kepsek Controller
     Route::get('pengajuan', [kepsekController::class, 'index'])->name('pengajuan');
     Route::get('profile', [kepsekController::class, 'profile'])->name('profile');

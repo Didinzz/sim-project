@@ -66,15 +66,15 @@
             text-align: left;
         }
 
-         .table2 th{
+        .table2 th {
             border: 1px solid #000000;
-            
+
             padding: 0;
             text-align: center;
 
         }
-        
-         .table2 td {
+
+        .table2 td {
             border-right: 1px solid #000000;
             border-left: 1px solid #000000;
             padding: 0;
@@ -88,7 +88,6 @@
 
         .signature img {
             width: 8rem;
-            background-color: red;
             display: block;
             margin: 0 auto;
             margin-top: 10px;
@@ -110,8 +109,8 @@
                 <img src="{{ public_path('assets/img/LOGO PROVINSI GORONTALO.png') }}" width="90px">
             </td>
             <td style="text-align: center; padding-bottom: 0;">
-                <h4>PEMERINTAH PROVINSI GORONTALO</h4>
-                <h4 style="">DINAS PENDIDIKAN, KEBUDAYAAN, PEMUDA DAN OLAHRAGA</h4>
+                <h3 style=" margin-bottom:2;">PEMERINTAH PROVINSI GORONTALO</h3>
+                <h3 style=" margin: auto 2;">DINAS PENDIDIKAN DAN KEBUDAYAAN</h3>
                 <h4>SEKOLAH MENENGAH KEJURUAN <br>
                     (SMK NEGERI 3 GORONTALO)</h4>
                 <h5 style="margin: 0;">Jl. Bali No. 2 Kelurahan Pulubala Kec. Kota Tengah <br>
@@ -199,11 +198,11 @@
                 <thead>
 
                     <tr>
-                        <th  style="text-align: center">NO</th>
-                        <th  style="text-align: center">Nama</th>
-                        <th  style="text-align: center">NISN</th>
-                        <th  style="text-align: center"> Jurusan</th>
-                        <th  style="text-align: center">Prodi yang diplih</th>
+                        <th style="text-align: center">NO</th>
+                        <th style="text-align: center">Nama</th>
+                        <th style="text-align: center">NISN</th>
+                        <th style="text-align: center"> Jurusan</th>
+                        <th style="text-align: center">Prodi yang diplih</th>
                     </tr>
                 </thead>
                 <tbody style="border-left: 1px solid #000;border-bottom: 1px solid #000;">
@@ -225,7 +224,7 @@
             </p>
         </div>
 
-       <div class="signature">
+        <div class="signature">
             @php
                 $convertdate = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggalSurat);
                 $tglSurat = $convertdate->isoformat('D MMMM YYYY');

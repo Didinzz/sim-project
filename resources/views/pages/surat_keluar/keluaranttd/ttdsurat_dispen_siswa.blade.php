@@ -102,7 +102,7 @@
             </td>
             <td style="text-align: center;">
                 <h3>PEMERINTAH PROVINSI GORONTALO</h3>
-                <h4>DINAS PENDIDIKAN, KEBUDAYAAN, PEMUDA DAN OLAHRAGA</h4>
+                <h3>DINAS PENDIDIKAN DAN KEBUDAYAAN</h3>
                 <h4>SEKOLAH MENENGAH KEJURUAN <br>
                     (SMK NEGERI 3 GORONTALO)</h4>
                 <h5>Jl. Bali No. 2 Kelurahan Pulubala Kec. Kota Tengah <br>

@@ -77,14 +77,14 @@
             <td style="text-align: center;">
                 <img src="{{ public_path('assets/img/LOGO PROVINSI GORONTALO.png') }}" width="90px">
             </td>
-            <td style="text-align: center;">
-                <h3>PEMERINTAH PROVINSI GORONTALO</h3>
-                <h4>DINAS PENDIDIKAN, KEBUDAYAAN, PEMUDA DAN OLAHRAGA</h4>
+           <td style="text-align: center; padding-bottom: 0;">
+                <h3 style=" margin-bottom:2;">PEMERINTAH PROVINSI GORONTALO</h3>
+                <h3 style=" margin: auto 2;">DINAS PENDIDIKAN DAN KEBUDAYAAN</h3>
                 <h4>SEKOLAH MENENGAH KEJURUAN <br>
                     (SMK NEGERI 3 GORONTALO)</h4>
-                <h5>Jl. Bali No. 2 Kelurahan Pulubala Kec. Kota Tengah <br>
+                <h5 style="margin: 0;">Jl. Bali No. 2 Kelurahan Pulubala Kec. Kota Tengah <br>
                     No. Tlp 0435 823 276</h5>
-                <h3>KOTA GORONTALO</h3>
+                <h3 style="margin: 5px 0 2px; padding: 0; margin-top: 2px;">KOTA GORONTALO</h3>
             </td>
             <td style="text-align: center;">
                 <img src="{{ public_path('assets/img/TUT WURI HANDAYANI.png') }}" width="100px">
