@@ -5,11 +5,11 @@ use App\Http\Controllers\{
     kepsekController,
     pegawaiController,
     siswaController,
-    surat_cuti_pegawaiController,
-    surat_tugas_pegawaiController,
-    surat_keterangan_siswaController,
-    surat_pensiun_pegawaiController,
-    surat_home_visit_pegawaiController
+    // surat_cuti_pegawaiController,
+    // surat_tugas_pegawaiController,
+    // surat_keterangan_siswaController,
+    // surat_pensiun_pegawaiController,
+    // surat_home_visit_pegawaiController
 };
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
