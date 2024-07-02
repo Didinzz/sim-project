@@ -1,18 +1,45 @@
-cara git clone branch = git clone -b my-branch https://github.com/Didinzz/sim-project.git
+# Dokumentasi Clone Laravel Using Git
 
-cara install :
-- clone repo diatas
-- buka terminal project dan berikan perintah composer install
-- jalankan juga perintah npm install
-- copy file .env.example ke .env dengan perintah = cp .env-example .env
-- lakukan generate key dengan perintah = php artisan key:generate
-- jalankan project dengan perintah = php artisan serve
-- buka terminal baru juga dan jalankan perintah = npm run dev
+## Instalasi
 
+1.  Clone Repository
+```
+git clone  https://github.com/Didinzz/sim-project.git
+```
+```
+cd sim-project
+```
+2. Instalasi Depedencies untuk menginstall depenecies PHP dan Javascript
 
-cara commit ke branch :
-- lakukan pindah branch dengan perintah : git checkout -b nama_branch
-- jika perintah sebelumnya terdapat kata error exist maka ganti sebagai berikut : git checkout nama_branch
+```
+composer install
+```
+```
+npm install
+```
 
-cara mendapatkan update terbaru dari project :
-- lakukan pindah branch dan ketik perintah = git pull
+3. Konfigurasi Environment Salin file .env.example menjadi .env dan sesuaikan konfigurasi database serta pengaturan lainnya:
+
+```
+cp env.example .env
+```
+```
+php artisan key:migrate
+```
+
+4. Jalankan Seeder dan Migrasi database untuk tabel-tabel yang diperlukan
+```
+php artisan migrate --seed
+```
+5. Link Storage Jalankan symlink untuk menghubungkan folder storage public
+```
+php artisan storage:link
+```
+6. Jalankan Server laravel dengan menggunakan
+```
+php artisan serv
+```
+7. Buka/tambah terminal baru didalam vs code jalankan perintah berikut untuk menjalankan tailwind css
+```
+npm run dev
+```

@@ -37,7 +37,7 @@
 
     @if ($user->role == 1)
         <div
-            class="block p-4 bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mx-auto">
+            class="block p-4 bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700  mx-auto">
             <div class="flex flex-wrap -mx-3">
                 <div class="w-full md:w-1/2 xl:w-1/3 px-3 mb-4 mx-auto my-2">
                     <!-- Metric Card 1 -->

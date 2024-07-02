@@ -19,7 +19,7 @@ class adminController extends Controller
         $user = Auth::user();
         $belum = keluar::where('status_persetujuan', 'belum')->count();
         $count = keluar::where('status_persetujuan', 'diajukan')->count();
-        $countacc = keluar::where('status_persetujuan', 'diterima')->count();
+        $countacc = keluar::where('status_persetujuan', 'diterima')->count();   
         $belumDiajukan = keluar::where('status_persetujuan', 'belum')->count();
         $totMasuk = masuk::count();
         $totKeluar = keluar::count();

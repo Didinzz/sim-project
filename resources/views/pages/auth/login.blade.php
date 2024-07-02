@@ -179,75 +179,77 @@
                             </div>
                         @endif
 
-                     <form action="{{ url('proses_login') }}" method="POST">
-    @csrf
+                        <form action="{{ url('proses_login') }}" method="POST">
+                            @csrf
 
-    <!-- Email Input -->
-    <div class="flex -mx-3 mb-5">
-        <div class="w-full px-3">
-            <label for="email" class="text-xs font-semibold px-1">Email</label>
-            <div class="flex relative">
-                <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                    <i class="fas fa-envelope text-gray-400 text-lg"></i>
-                </div>
-                <input type="email" name="email"
-                    class="w-full shadow-sm -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                    placeholder="Email@gmail.com" id="emailInput">
-            </div>
-        </div>
-    </div>
+                            <!-- Email Input -->
+                            <div class="flex -mx-3 mb-5">
+                                <div class="w-full px-3">
+                                    <label for="email" class="text-xs font-semibold px-1">Email</label>
+                                    <div class="flex relative">
+                                        <div
+                                            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                            <i class="fas fa-envelope text-gray-400 text-lg"></i>
+                                        </div>
+                                        <input type="email" name="email"
+                                            class="w-full shadow-sm -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            placeholder="Email@gmail.com" id="emailInput">
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Password Input -->
-    <div class="flex -mx-3 mb-5">
-        <div class="w-full px-3">
-            <label for="password" class="text-xs font-semibold px-1">Password</label>
-            <div class="flex relative">
-                <div class="w-10 z-10 pr-1 text-center pointer-events-none flex items-center justify-center">
-                    <i class="fas fa-lock text-gray-400 text-lg"></i>
-                </div>
-                <input type="password" name="password"
-                    class="w-full shadow-sm -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                    placeholder="************" id="passwordInput">
-                <span id="togglePassword"
-                    class="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer">
-                    <i class="fa-solid fa-eye-low-vision text-gray-400 text-lg"></i>
-                </span>
-            </div>
-        </div>
-    </div>
+                            <!-- Password Input -->
+                            <div class="flex -mx-3 mb-5">
+                                <div class="w-full px-3">
+                                    <label for="password" class="text-xs font-semibold px-1">Password</label>
+                                    <div class="flex relative">
+                                        <div
+                                            class="w-10 z-10 pr-1 text-center pointer-events-none flex items-center justify-center">
+                                            <i class="fas fa-lock text-gray-400 text-lg"></i>
+                                        </div>
+                                        <input type="password" name="password"
+                                            class="w-full shadow-sm -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            placeholder="************" id="passwordInput">
+                                        <span id="togglePassword"
+                                            class="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer">
+                                            <i class="fa-solid fa-eye-low-vision text-gray-400 text-lg"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Login Button -->
-    <div class="flex -mx-3">
-        <div class="w-full px-3">
-            <button type="submit"
-                class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">Login</button>
-        </div>
-    </div>
-</form>
+                            <!-- Login Button -->
+                            <div class="flex -mx-3">
+                                <div class="w-full px-3">
+                                    <button type="submit"
+                                        class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">Login</button>
+                                </div>
+                            </div>
+                        </form>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Tambahkan event listener untuk ikon mata
-        document.getElementById('togglePassword').addEventListener('click', function() {
-            togglePasswordVisibility('passwordInput');
-        });
-    });
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                // Tambahkan event listener untuk ikon mata
+                                document.getElementById('togglePassword').addEventListener('click', function() {
+                                    togglePasswordVisibility('passwordInput');
+                                });
+                            });
 
-    function togglePasswordVisibility(inputId) {
-        var passwordInput = document.getElementById(inputId);
-        var icon = document.getElementById('togglePassword').getElementsByTagName('i')[0];
+                            function togglePasswordVisibility(inputId) {
+                                var passwordInput = document.getElementById(inputId);
+                                var icon = document.getElementById('togglePassword').getElementsByTagName('i')[0];
 
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            icon.classList.remove('fa-eye-low-vision');
-            icon.classList.add('fa-eye');
-        } else {
-            passwordInput.type = 'password';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-low-vision');
-        }
-    }
-</script>
+                                if (passwordInput.type === 'password') {
+                                    passwordInput.type = 'text';
+                                    icon.classList.remove('fa-eye-low-vision');
+                                    icon.classList.add('fa-eye');
+                                } else {
+                                    passwordInput.type = 'password';
+                                    icon.classList.remove('fa-eye');
+                                    icon.classList.add('fa-eye-low-vision');
+                                }
+                            }
+                        </script>
 
 
 
